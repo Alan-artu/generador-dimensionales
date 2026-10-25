@@ -78,7 +78,7 @@ TABLA_LITIO_AUTOMATICA = {
 BASE_DATOS_UPS = {
     "1310": {"alto": 1100, "ancho": 358, "fondo": 883, "peso": 93, "dxf": "ups_1310"}, "1315": {"alto": 1100, "ancho": 358, "fondo": 883, "peso": 109, "dxf": "ups_1315"},
     "1320": {"alto": 1100, "ancho": 358, "fondo": 883, "peso": 109, "dxf": "ups_1320"}, "1330": {"alto": 1250, "ancho": 378, "fondo": 883, "peso": 117, "dxf": "ups_1330"},
-    "1340": {"alto": 1250, "ancho": 358, "fondo": 835, "peso": 89, "dxf": "ups_1340"}, "1360 127V": {"alto": 1800, "ancho": 600, "fondo": 1000, "peso": 230, "dxf": "ups_1360_127"},
+    "1340": {"alto": 1250, "ancho": 358, "fondo": 835, "peso": 89, "dxf": "ups_1340"}, "1360 127-220V": {"alto": 1800, "ancho": 600, "fondo": 1000, "peso": 230, "dxf": "ups_1360_127"},
     "1360 230-400V": {"alto": 1200, "ancho": 400, "fondo": 960, "peso": 145, "dxf": "ups_1360_230"}, "1380": {"alto": 1800, "ancho": 600, "fondo": 1000, "peso": 230, "dxf": "ups_1380"},
     "13100": {"alto": 1800, "ancho": 600, "fondo": 1000, "peso": 230, "dxf": "ups_13100"}, "13120": {"alto": 1800, "ancho": 600, "fondo": 1000, "peso": 230, "dxf": "ups_13120"},
     "13160": {"alto": 1800, "ancho": 600, "fondo": 1000, "peso": 320, "dxf": "ups_13160"}, "13200": {"alto": 1800, "ancho": 600, "fondo": 1000, "peso": 320, "dxf": "ups_13200"},
@@ -86,17 +86,75 @@ BASE_DATOS_UPS = {
     "13400 230V": {"alto": 1950, "ancho": 1000, "fondo": 900, "peso": 750, "dxf": "ups_13400_230"}, "13400 277V": {"alto": 1950, "ancho": 1000, "fondo": 900, "peso": 750, "dxf": "ups_13400_277"},
     "13500 230V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1100, "dxf": "ups_13500_230"}, "13500 277V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1100, "dxf": "ups_13500_277"},
     "13600 230V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1100, "dxf": "ups_13600_230"}, "13600 277V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1100, "dxf": "ups_13600_277"},
-    "13800 230V": {"alto": 1950, "ancho": 1900, "fondo": 900, "peso": 1450, "dxf": "ups_13800_230"}, "13800 277V": {"alto": 1950, "ancho": 1900, "fondo": 900, "peso": 1450, "dxf": "ups_13800_277"},
+    "13800 230V": {"alto": 1950, "ancho": 1900, "fondo": 900, "peso": 1450, "dxf": "ups_13800_230"}, "13800 277V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1150, "dxf": "ups_13800_277"},
     "131000 230V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131000_230"}, "131000 277V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131000_277"},
     "131200 230V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131200_230"}, "131200 277V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131200_277"}
 }
 
 BASE_DATOS_MODULOS = {
-    "Ninguno": {"alto": 0, "ancho": 0, "fondo": 0, "dxf": None},
-    "263361": {"alto": 1100, "ancho": 447, "fondo": 901, "dxf": "mod_263361"}, "264145": {"alto": 1200, "ancho": 600, "fondo": 900, "dxf": "mod_264145"},
-    "264172": {"alto": 1250, "ancho": 600, "fondo": 900, "dxf": "mod_264172"}, "264175": {"alto": 1950, "ancho": 1136, "fondo": 1200, "dxf": "mod_264175"},
-    "264450": {"alto": 1800, "ancho": 715, "fondo": 1000, "dxf": "mod_264450"}, "264600": {"alto": 440, "ancho": 260, "fondo": 680, "dxf": "mod_264600"}
+    "Ninguno": {"alto": 0, "ancho": 0, "fondo": 0, "dxf": None, "peso_vacio": 0},
+    "263361": {"alto": 1100, "ancho": 447, "fondo": 901, "dxf": "mod_263361", "peso_vacio": 82}, "264145": {"alto": 1200, "ancho": 600, "fondo": 900, "dxf": "mod_264145", "peso_vacio": 96},
+    "264172": {"alto": 1250, "ancho": 600, "fondo": 900, "dxf": "mod_264172", "peso_vacio": 96}, "264175": {"alto": 1950, "ancho": 1136, "fondo": 1200, "dxf": "mod_264175", "peso_vacio": 130},
+    "264450": {"alto": 1800, "ancho": 715, "fondo": 1000, "dxf": "mod_264450", "peso_vacio": 130}, "264600": {"alto": 440, "ancho": 260, "fondo": 680, "dxf": "mod_264600", "peso_vacio": 17}
 }
+
+# Matriz estandarizada de Transformadores
+BASE_DATOS_TRANSFORMADORES = {
+    # --- NUEVOS DATOS ACTUALIZADOS (10 a 40 kVA) ---
+    (10, "208D", "127/220"): 180, (10, "220D", "127/220"): 180, (10, "380D", "127/220"): 69, (10, "400D", "127/220"): 69,
+    (10, "440D", "127/220"): 171, (10, "460D", "127/220"): 171, (10, "480D", "127/220"): 171, 
+    (10, "220/380", "127/220"): 42, (10, "230/400", "127/220"): 42, (10, "254/440", "127/220"): 60, 
+    (10, "266/460", "127/220"): 60, (10, "277/480", "127/220"): 60,
+    
+    (15, "220/380", "127/220"): 189, (15, "230/400", "127/220"): 189, (15, "208D", "127/220"): 120, (15, "220D", "127/220"): 120,
+    (15, "254/440", "127/220"): 141, (15, "266/460", "127/220"): 141, (15, "277/480", "127/220"): 141, 
+    (15, "440D", "127/220"): 144, (15, "460D", "127/220"): 144, (15, "480D", "127/220"): 144,
+    
+    (20, "254/440", "127/220"): 90, (20, "266/460", "127/220"): 90, (20, "277/480", "127/220"): 90, 
+    (20, "440D", "127/220"): 267, (20, "460D", "127/220"): 267, (20, "480D", "127/220"): 267, 
+    (20, "220/380", "127/220"): 66, (20, "230/400", "127/220"): 66, (20, "208D", "127/220"): 141, (20, "220D", "127/220"): 141,
+    
+    (30, "254/440", "127/220"): 273, (30, "266/460", "127/220"): 273, (30, "277/480", "127/220"): 273, 
+    (30, "220/380", "127/220"): 153, (30, "230/400", "127/220"): 153, (30, "440D", "127/220"): 372, 
+    (30, "460D", "127/220"): 372, (30, "480D", "127/220"): 372,
+    
+    (40, "127/220", "230/400"): 153, (40, "120/208", "230/400"): 153, (40, "115/200", "230/400"): 153, 
+    (40, "254/440", "230/400"): 60, (40, "266/460", "230/400"): 60, (40, "277/480", "230/400"): 60, 
+    (40, "440D", "230/400"): 162, (40, "460D", "230/400"): 162, (40, "480D", "230/400"): 162, 
+    (40, "208D", "230/400"): 165, (40, "220D", "230/400"): 165,
+    
+    # --- DATOS EXISTENTES (> 40 kVA) ---
+    (60, "277/480", "230/400"): 135, (60, "127/220", "230/400"): 60, 
+    (80, "277/480", "230/400"): 580, (80, "277/480", "127/220"): 105,
+    (100, "277/480", "127/220"): 175, (120, "127/220", "230/400"): 370, 
+    (160, "277/480", "230/400"): 230, (200, "127/220", "230/400"): 280, 
+    (300, "127/220", "230/400"): 370, (400, "277/480", "230/400"): 240,
+    (500, "127/220", "230/400"): 580, (600, "230/400", "127/220"): 660, 
+    (800, "277/480", "230/400"): 42, (1000, "127/220", "230/400"): 906, 
+    (1200, "277/480", "230/400"): 490
+}
+
+def calcular_peso_transformador(kva, v_in, v_out):
+    kva_num = int(kva)
+    peso_tr = 0
+    
+    # 1. Búsqueda Exacta
+    if (kva_num, v_in, v_out) in BASE_DATOS_TRANSFORMADORES: 
+        peso_tr = BASE_DATOS_TRANSFORMADORES[(kva_num, v_in, v_out)]
+    # 2. NUEVO: Búsqueda Inversa (Espejo bidireccional)
+    elif (kva_num, v_out, v_in) in BASE_DATOS_TRANSFORMADORES:
+        peso_tr = BASE_DATOS_TRANSFORMADORES[(kva_num, v_out, v_in)]
+    else:
+        # 3. Respaldo por Voltaje de Entrada
+        match_vin = [p for (k, vi, vo), p in BASE_DATOS_TRANSFORMADORES.items() if k == kva_num and vi == v_in]
+        if match_vin: peso_tr = sum(match_vin) / len(match_vin)
+        else:
+            # 4. Respaldo por Promedio de Capacidad
+            match_kva = [p for (k, vi, vo), p in BASE_DATOS_TRANSFORMADORES.items() if k == kva_num]
+            if match_kva: peso_tr = sum(match_kva) / len(match_kva)
+            else: peso_tr = kva_num * 3.5 
+            
+    return peso_tr
 
 BASE_DATOS_GABPAR = {
     "265233": {"alto": 1020, "ancho": 855, "fondo": 300, "peso": "", "dxf": "gabpar_265233"},
@@ -125,6 +183,16 @@ GABINETE_LITIO = {"alto": 2000, "ancho": 600, "fondo": 860, "dxf": "bat_litio"}
 GABINETE_DIST_LITIO = {"alto": 2000, "ancho": 600, "fondo": 860, "peso": 150, "dxf": "distrubucion_litio"} 
 
 LISTA_VOLTAJES = ["120/208", "127/220", "220/380", "230/400", "254/440", "266/460", "277/480", "208D", "220D", "380D", "400D", "440D", "460D", "480D"]
+
+# --- DICCIONARIO DE AGRUPAMIENTO DE TAPS PARA TÍTULOS ---
+TAPS_VOLTAJE = {
+    "120/208": "115/200V, 120/208V, 127/220V", "127/220": "115/200V, 120/208V, 127/220V",
+    "208D": "208D, 220D", "220D": "208D, 220D",
+    "220/380": "220/380V, 230/400V", "230/400": "220/380V, 230/400V",
+    "380D": "380D, 400D", "400D": "380D, 400D",
+    "254/440": "254/440V, 266/460V, 277/480V", "266/460": "254/440V, 266/460V, 277/480V", "277/480": "254/440V, 266/460V, 277/480V",
+    "440D": "440D, 460D, 480D", "460D": "440D, 460D, 480D", "480D": "440D, 460D, 480D"
+}
 
 def extraer_kva(modelo_str):
     try: return str(int(modelo_str.split()[0][2:]))
@@ -221,8 +289,8 @@ with col_cfg1:
                 if not es_gigante: lista_ups_filtrada.append(modelo)
 
         idx_ups_default = lista_ups_filtrada.index("1310") if "1310" in lista_ups_filtrada else 0
-        # Muestra visualmente solo el modelo base (ej. "1310", "1360") sin medidas ni voltajes
-        with col_ups: var_ups = st.selectbox("Modelo UPS:", lista_ups_filtrada, index=idx_ups_default, format_func=lambda x: x.split()[0])
+        # Muestra visualmente el modelo base, y SOLO mantiene el voltaje para el 1360
+        with col_ups: var_ups = st.selectbox("Modelo UPS:", lista_ups_filtrada, index=idx_ups_default, format_func=lambda x: x if "1360 " in x else x.split()[0])
 
         # Inicialización forzada por defecto en "Ninguno" para el estandar de la empresa
         var_cant_mods = st.selectbox("Cantidad de Módulos de Potencia:", ["Ninguno", "1", "2"], index=0)
@@ -302,14 +370,14 @@ with col_cfg1:
         # EXTRACCIÓN TEMPRANA PARA FILTRADO INTELIGENTE
         kva = extraer_kva(var_ups)
         
-        # --- NUEVA LÓGICA: RESTRICCIÓN DE LITIO PARA 1360 127V ---
-        opciones_bateria = ["Ninguno", "Plomo"] if var_ups == "1360 127V" else ["Ninguno", "Plomo", "Litio"]
+        # --- NUEVA LÓGICA: RESTRICCIÓN DE LITIO PARA 1360 127-220V ---
+        opciones_bateria = ["Ninguno", "Plomo"] if var_ups == "1360 127-220V" else ["Ninguno", "Plomo", "Litio"]
         
         col_bat1, col_bat2 = st.columns(2)
         with col_bat1: 
             var_tipo_bat = st.selectbox("Tipo de Batería:", opciones_bateria, index=1)
-            if var_ups == "1360 127V":
-                st.caption("⚠️ Baterías de Litio no compatibles con UPS 1360 nativo en 127V.")
+            if var_ups == "1360 127-220V":
+                st.caption("⚠️ Baterías de Litio no compatibles con UPS 1360 nativo en 127-220V.")
         
         minutos_disponibles = []
         if var_tipo_bat == "Plomo":
@@ -376,19 +444,38 @@ with col_cfg1:
             elif "230" in var_ups or var_ups in ["1340", "13120", "13160", "13200"]: idx_v = 3 
             elif "277" in var_ups: idx_v = 6 
             
-        col_v1, col_v2 = st.columns(2)
-        with col_v1: var_volt_entrada = st.selectbox("Voltaje de Entrada:", LISTA_VOLTAJES, index=idx_v)
-        with col_v2: var_volt_salida = st.selectbox("Voltaje de Salida:", LISTA_VOLTAJES, index=idx_v)
+        # --- LÓGICA INTELIGENTE DE VOLTAJE NATIVO ---
+        opciones_nativo = ["230/400"] # Fallback
+        if "127" in var_ups: opciones_nativo = ["127/220"]
+        elif "230" in var_ups: opciones_nativo = ["230/400"]
+        elif "277" in var_ups: opciones_nativo = ["277/480"]
+        elif var_ups in ["1310", "1315", "1320", "1330"]: opciones_nativo = ["120/208", "127/220"]
+        elif var_ups in ["1380", "13100"]: opciones_nativo = ["120/208", "127/220", "230/400"]
         
-        modelo_base_ups = var_ups.split()[0] 
+        var_volt_nativo = st.selectbox("Voltaje Nativo del UPS:", opciones_nativo)
+
+        col_v1, col_v2 = st.columns(2)
+        with col_v1: var_volt_entrada = st.selectbox("Voltaje de Entrada (Cliente):", LISTA_VOLTAJES, index=idx_v)
+        with col_v2: var_volt_salida = st.selectbox("Voltaje de Salida (Cliente):", LISTA_VOLTAJES, index=idx_v)
+        
+        modelo_base_ups = var_ups.split()[0]
         minutos_str = var_tiempo_respaldo.zfill(2) 
         sufijo_ups = "" if var_sufijo_ups == "HF" else var_sufijo_ups.strip()
         kva_ups = extraer_kva(modelo_base_ups)
         
-        # Generación del título para la interfaz
-        v_in = var_volt_entrada if "V" in var_volt_entrada or "D" in var_volt_entrada else f"{var_volt_entrada}V"
-        v_out = var_volt_salida if "V" in var_volt_salida or "D" in var_volt_salida else f"{var_volt_salida}V"
-        str_voltaje_oficial = f" VN: {v_in}" if var_volt_entrada == var_volt_salida else f" VE: {v_in} VS: {v_out}"
+        # Generación del título para la interfaz (NUEVA LÓGICA DE TAPS)
+        def format_volt(v_str):
+            return v_str if v_str.endswith(("V", "D")) else f"{v_str}V"
+
+        if var_volt_entrada == var_volt_salida:
+            if var_volt_entrada == var_volt_nativo:
+                str_voltaje_oficial = f" VN: {format_volt(var_volt_nativo)}"
+            else:
+                str_voltaje_oficial = f" VN: {TAPS_VOLTAJE.get(var_volt_entrada, format_volt(var_volt_entrada))}"
+        else:
+            ve_str = TAPS_VOLTAJE.get(var_volt_entrada, format_volt(var_volt_entrada)) if var_volt_entrada != var_volt_nativo else format_volt(var_volt_entrada)
+            vs_str = TAPS_VOLTAJE.get(var_volt_salida, format_volt(var_volt_salida)) if var_volt_salida != var_volt_nativo else format_volt(var_volt_salida)
+            str_voltaje_oficial = f" VE: {ve_str} VS: {vs_str}"
         
         str_bat_oficial = ""
         if var_tipo_bat == "Litio" and cant_final_bat > 0:
@@ -718,6 +805,21 @@ with st.container():
     svg_h2.append(f'<line x1="{x_cota_h - 3}" y1="{sistema_y + sys_h}" x2="{x_cota_h + 3}" y2="{sistema_y + sys_h}" stroke="#06b6d4" stroke-width="1"/>')
     svg_h2.append(f'<text x="{x_cota_h + 14}" y="{sistema_y + sys_h/2}" fill="#06b6d4" font-size="9px" font-family="sans-serif" font-weight="bold" text-anchor="middle" transform="rotate(-90 {x_cota_h + 14} {sistema_y + sys_h/2})">{fondo_cuarto_mm} mm ({fondo_cuarto_m:.2f} m)</text>')
 
+    # --- CÁLCULO DE CLIMATIZACIÓN (BASADO EN GOOGLE SHEETS) ---
+    factor_carga = 0.80
+    ups_btu = int(kva_ups) * factor_carga * 217.0
+    btu_total = ups_btu * cant_sistemas
+    
+    if var_mod1 != "Ninguno" or var_mod2 != "Ninguno":
+        btu_total += int(kva_ups) * factor_carga * 131.84 * cant_sistemas
+        
+    if var_tipo_bat == "Plomo": btu_total += (ups_btu * 0.34) * cant_sistemas
+    elif var_tipo_bat == "Litio": btu_total += (ups_btu * 0.26) * cant_sistemas
+    
+    tr_total = btu_total / 12000.0
+    
+    # Nota térmica removida del SVG (Ahora se muestra en la tabla de la interfaz)
+    
     svg_code_h2 = f'<div style="display:flex; justify-content:center; margin-bottom: 0px;"><svg width="100%" viewBox="0 0 {canvas_w} {canvas_h}" style="max-height: 400px; background-color: transparent;">{"".join(svg_h2)}</svg></div>'
 
     # RENDERIZAR AMBOS SVGs EN DOS COLUMNAS
@@ -750,65 +852,138 @@ with st.container():
     # st.code agrega automáticamente el botón de "Copiar al portapapeles" en la esquina superior derecha
     contenedor_tabla.code(titulo_documento, language="text")
     
-    tabla_html = """<table style="width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 0.95rem; background-color: rgba(255, 255, 255, 0.05);">
-<tr style="background-color: rgba(255, 255, 255, 0.1); text-align: left;">
-<th style="padding: 12px; color: white; border-bottom: 2px solid #4b5563;">Tipo de Equipo</th>
-<th style="padding: 12px; color: white; border-bottom: 2px solid #4b5563;">Num. Gabinetes</th>
-<th style="padding: 12px; color: white; border-bottom: 2px solid #4b5563;">Dimensiones (Al x An x Fo) mm</th>
-<th style="padding: 12px; color: #93c5fd; border-bottom: 2px solid #4b5563;">Peso (Kg) ✎ Editable</th>
-</tr>"""
-    
-    def add_fila(equipo, cantidad, dim, peso):
-        if peso == "" or peso is None: peso = "-"
-        return f"""<tr style="border-bottom: 1px solid #374151;">
-<td style="padding: 12px; color: #eab308; font-weight: bold;">{equipo}</td>
-<td style="padding: 12px; color: white; font-weight: bold; text-align: center;">{cantidad}</td>
-<td style="padding: 12px; color: white;">{dim}</td>
-<td style="padding: 12px; color: white; background-color: rgba(255, 255, 255, 0.1); border-left: 1px solid #4b5563;" contenteditable="true" title="Clic para editar">{peso}</td>
-</tr>"""
+    # Construcción de la tabla con columnas nativas de Streamlit para capturar inputs
+    pesos_editados = {}
+    with contenedor_tabla:
+        c1, c2, c3, c4 = st.columns([3, 2, 3, 2])
+        c1.markdown("**Tipo de Equipo**")
+        c2.markdown("**Num. Gabinetes**")
+        c3.markdown("**Dimensiones (mm)**")
+        c4.markdown("**Peso (Kg)** ✎")
+        st.markdown("<hr style='margin: 0.5em 0;'>", unsafe_allow_html=True)
+
+        def add_fila_nativa(key_id, equipo, cantidad, dim, peso_def):
+            peso_def = str(peso_def) if peso_def else "-"
+            cols = st.columns([3, 2, 3, 2])
+            cols[0].markdown(f"<span style='color: #eab308; font-weight: bold;'>{equipo}</span>", unsafe_allow_html=True)
+            cols[1].markdown(f"<span style='font-weight: bold;'>{cantidad}</span>", unsafe_allow_html=True)
+            cols[2].markdown(dim)
+            
+            # Llave dinámica: Al agregar el peso calculado a la variable 'key', 
+            # forzamos a la UI a refrescarse visualmente si el cálculo matemático cambia.
+            llave_dinamica = f"peso_{key_id}_{peso_def}"
+            
+            pesos_editados[key_id] = cols[3].text_input("Peso", value=peso_def, key=llave_dinamica, label_visibility="collapsed")
+            st.markdown("<hr style='margin: 0.2em 0; opacity: 0.3;'>", unsafe_allow_html=True)
+
+        # --- LÓGICA DE TRANSFORMADORES T1 y T2 ---
+        kva_num = int(kva_ups)
+        peso_t1 = calcular_peso_transformador(kva_ups, var_volt_entrada, var_volt_nativo) if var_volt_entrada != var_volt_nativo else 0
+        peso_t2 = calcular_peso_transformador(kva_ups, var_volt_nativo, var_volt_salida) if var_volt_salida != var_volt_nativo else 0
         
-    # Bloque de Módulos
-    if var_mod1 != "Ninguno" and var_mod2 != "Ninguno":
-        tabla_html += add_fila("MÓDULO DE ENTRADA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod1]['alto']} x {BASE_DATOS_MODULOS[var_mod1]['ancho']} x {BASE_DATOS_MODULOS[var_mod1]['fondo']}", BASE_DATOS_MODULOS[var_mod1].get("peso", "-"))
-        tabla_html += add_fila("MÓDULO DE SALIDA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod2]['alto']} x {BASE_DATOS_MODULOS[var_mod2]['ancho']} x {BASE_DATOS_MODULOS[var_mod2]['fondo']}", BASE_DATOS_MODULOS[var_mod2].get("peso", "-"))
-    else:
-        if var_mod1 != "Ninguno": tabla_html += add_fila("MÓDULO DE POTENCIA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod1]['alto']} x {BASE_DATOS_MODULOS[var_mod1]['ancho']} x {BASE_DATOS_MODULOS[var_mod1]['fondo']}", BASE_DATOS_MODULOS[var_mod1].get("peso", "-"))
-        if var_mod2 != "Ninguno": tabla_html += add_fila("MÓDULO DE POTENCIA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod2]['alto']} x {BASE_DATOS_MODULOS[var_mod2]['ancho']} x {BASE_DATOS_MODULOS[var_mod2]['fondo']}", BASE_DATOS_MODULOS[var_mod2].get("peso", "-"))
-
-    # Bloque UPS
-    str_ups_oficial = f"UPS-IND HF {modelo_base_ups} {sufijo_ups}".strip()
-    tabla_html += add_fila(str_ups_oficial, cant_sistemas, f"{BASE_DATOS_UPS[var_ups]['alto']} x {BASE_DATOS_UPS[var_ups]['ancho']} x {BASE_DATOS_UPS[var_ups]['fondo']}", BASE_DATOS_UPS[var_ups].get("peso", "-"))
-
-    # Bloque Baterías
-    if var_tipo_bat == "Plomo" and sap_final_bat != "Ninguno" and cant_final_bat > 0:
-        peso_plomo = var_peso_manual if var_manual_bat else TABLA_PLOMO_AUTOMATICA.get(llave_busqueda, {}).get("peso", "-")
-        cant_total_plomo = cant_final_bat * cant_sistemas
-        str_bat_plomo = f"BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo}".strip()
-        tabla_html += add_fila(str_bat_plomo, cant_total_plomo, f"{BASE_DATOS_PLOMO[sap_final_bat]['alto']} x {BASE_DATOS_PLOMO[sap_final_bat]['ancho']} x {BASE_DATOS_PLOMO[sap_final_bat]['fondo']}", f"{peso_plomo} c/u")
+        peso_calc_mod1 = "-"
+        peso_calc_mod2 = "-"
+        p1, p2 = 0, 0
         
-    elif var_tipo_bat == "Litio" and cant_final_bat > 0:
-        peso_litio = var_peso_manual if var_manual_bat else TABLA_LITIO_AUTOMATICA.get(llave_busqueda, {}).get("peso", "-")
-        cant_dist = cant_final_bat // 4  
-        cant_total_dist = cant_dist * cant_sistemas
-        cant_total_litio = cant_final_bat * cant_sistemas
-        str_bat_litio = f"BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo}".strip()
+        if var_mod1 != "Ninguno" and var_mod2 != "Ninguno":
+            # Reparto inteligente >= 400 kVA
+            if kva_num >= 400 and peso_t1 > 0 and peso_t2 > 0:
+                p1 = BASE_DATOS_MODULOS[var_mod1]["peso_vacio"] + peso_t1 + 15
+                p2 = BASE_DATOS_MODULOS[var_mod2]["peso_vacio"] + peso_t2 + 15
+                peso_calc_mod1 = str(int(round(p1 / 10.0)) * 10)
+                peso_calc_mod2 = str(int(round(p2 / 10.0)) * 10)
+            else:
+                p1 = BASE_DATOS_MODULOS[var_mod1]["peso_vacio"] + peso_t1 + peso_t2 + (15 if (peso_t1>0 or peso_t2>0) else 0)
+                p2 = BASE_DATOS_MODULOS[var_mod2]["peso_vacio"]
+                peso_calc_mod1 = str(int(round(p1 / 10.0)) * 10) if (peso_t1>0 or peso_t2>0) else str(p1)
+                peso_calc_mod2 = str(p2) # Vacio
+                
+        else:
+            if var_mod1 != "Ninguno": 
+                p1 = BASE_DATOS_MODULOS[var_mod1]["peso_vacio"] + peso_t1 + peso_t2 + (15 if (peso_t1>0 or peso_t2>0) else 0)
+                peso_calc_mod1 = str(int(round(p1 / 10.0)) * 10) if (peso_t1>0 or peso_t2>0) else str(BASE_DATOS_MODULOS[var_mod1]["peso_vacio"])
+            if var_mod2 != "Ninguno": 
+                p2 = BASE_DATOS_MODULOS[var_mod2]["peso_vacio"]
+                peso_calc_mod2 = str(BASE_DATOS_MODULOS[var_mod2]["peso_vacio"])
+
+        # --- IMPRESIÓN DE DEPURACIÓN EN CONSOLA ---
+        print("______________________")
+        print(f"📝 DESGLOSE DE CÁLCULO DE PESOS - UPS {kva_num}kVA")
+        print(f"Voltajes -> Entrada: {var_volt_entrada} | Nativo: {var_volt_nativo} | Salida: {var_volt_salida}")
+        print(f"Transformador 1 (Entrada -> Nativo): {peso_t1} kg")
+        print(f"Transformador 2 (Nativo -> Salida): {peso_t2} kg")
         
-        if cant_total_dist > 0:
-            tabla_html += add_fila("GABINETE DE DISTRIBUCIÓN", cant_total_dist, f"{GABINETE_DIST_LITIO['alto']} x {GABINETE_DIST_LITIO['ancho']} x {GABINETE_DIST_LITIO['fondo']}", GABINETE_DIST_LITIO.get("peso", "-"))
-        tabla_html += add_fila(str_bat_litio, cant_total_litio, f"{GABINETE_LITIO['alto']} x {GABINETE_LITIO['ancho']} x {GABINETE_LITIO['fondo']}", f"{peso_litio} c/u")
+        if var_mod1 != "Ninguno" and var_mod2 != "Ninguno":
+            if kva_num >= 400 and peso_t1 > 0 and peso_t2 > 0:
+                print("Configuración: DOBLE MÓDULO (Reparto por ser >= 400kVA)")
+                print(f"Módulo 1 ({var_mod1}): {BASE_DATOS_MODULOS[var_mod1]['peso_vacio']} (vacío) + {peso_t1} (T1) + 15 (Cobre) = {p1} kg -> Redondeado: {peso_calc_mod1} kg")
+                print(f"Módulo 2 ({var_mod2}): {BASE_DATOS_MODULOS[var_mod2]['peso_vacio']} (vacío) + {peso_t2} (T2) + 15 (Cobre) = {p2} kg -> Redondeado: {peso_calc_mod2} kg")
+            else:
+                print("Configuración: DOBLE MÓDULO (Sin reparto, todo al Mod 1)")
+                cobre_extra = 15 if (peso_t1 > 0 or peso_t2 > 0) else 0
+                print(f"Módulo 1 ({var_mod1}): {BASE_DATOS_MODULOS[var_mod1]['peso_vacio']} (vacío) + {peso_t1 + peso_t2} (T1+T2) + {cobre_extra} (Cobre) = {p1} kg -> Redondeado: {peso_calc_mod1} kg")
+                print(f"Módulo 2 ({var_mod2}): {BASE_DATOS_MODULOS[var_mod2]['peso_vacio']} (vacío) (Sin transformador)")
+        elif var_mod1 != "Ninguno":
+            print(f"Configuración: UN SOLO MÓDULO ({var_mod1})")
+            cobre_extra = 15 if (peso_t1 > 0 or peso_t2 > 0) else 0
+            print(f"Módulo 1: {BASE_DATOS_MODULOS[var_mod1]['peso_vacio']} (vacío) + {peso_t1 + peso_t2} (T1+T2) + {cobre_extra} (Cobre) = {p1} kg -> Redondeado: {peso_calc_mod1} kg")
+        print("______________________")
+        # ------------------------------------------
 
-    # Bloque Paralelo
-    if var_es_paralelo == "Paralelo":
-        if var_lleva_gabconx == "Sí":
-            tabla_html += add_fila("GABINETE DE CONEXIÓN", 1, f"{BASE_DATOS_GABCONX[var_gabconx]['alto']} x {BASE_DATOS_GABCONX[var_gabconx]['ancho']} x {BASE_DATOS_GABCONX[var_gabconx]['fondo']}", BASE_DATOS_GABCONX[var_gabconx].get("peso", "-"))
-        tabla_html += add_fila("GABINETE PARALELO", 1, f"{BASE_DATOS_GABPAR[var_gabpar]['alto']} x {BASE_DATOS_GABPAR[var_gabpar]['ancho']} x {BASE_DATOS_GABPAR[var_gabpar]['fondo']}", BASE_DATOS_GABPAR[var_gabpar].get("peso", "-"))
+        if var_mod1 != "Ninguno" and var_mod2 != "Ninguno":
+            add_fila_nativa("MOD_ENT", "MÓDULO DE ENTRADA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod1]['alto']} x {BASE_DATOS_MODULOS[var_mod1]['ancho']} x {BASE_DATOS_MODULOS[var_mod1]['fondo']}", peso_calc_mod1)
+            add_fila_nativa("MOD_SAL", "MÓDULO DE SALIDA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod2]['alto']} x {BASE_DATOS_MODULOS[var_mod2]['ancho']} x {BASE_DATOS_MODULOS[var_mod2]['fondo']}", peso_calc_mod2)
+        else:
+            if var_mod1 != "Ninguno": add_fila_nativa("MOD_POT1", "MÓDULO DE POTENCIA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod1]['alto']} x {BASE_DATOS_MODULOS[var_mod1]['ancho']} x {BASE_DATOS_MODULOS[var_mod1]['fondo']}", peso_calc_mod1)
+            if var_mod2 != "Ninguno": add_fila_nativa("MOD_POT2", "MÓDULO DE POTENCIA", cant_sistemas, f"{BASE_DATOS_MODULOS[var_mod2]['alto']} x {BASE_DATOS_MODULOS[var_mod2]['ancho']} x {BASE_DATOS_MODULOS[var_mod2]['fondo']}", peso_calc_mod2)
 
-    tabla_html += "</table>"
-    
-    if var_tipo_bat in ["Plomo", "Litio"]:
-        tabla_html += f'<p style="font-size: 0.85rem; color: #9ca3af; margin-top: 8px; text-align: right;">* Tiempo de Respaldo del Sistema: <b>{var_tiempo_respaldo} Minutos</b></p>'
-    contenedor_tabla.markdown(tabla_html, unsafe_allow_html=True)
-    contenedor_tabla.markdown("---")
+        # Bloque UPS
+        str_ups_oficial = f"UPS-IND HF {modelo_base_ups} {sufijo_ups}".strip()
+        add_fila_nativa("UPS", str_ups_oficial, cant_sistemas, f"{BASE_DATOS_UPS[var_ups]['alto']} x {BASE_DATOS_UPS[var_ups]['ancho']} x {BASE_DATOS_UPS[var_ups]['fondo']}", BASE_DATOS_UPS[var_ups].get("peso", "-"))
+
+        # Bloque Baterías
+        if var_tipo_bat == "Plomo" and sap_final_bat != "Ninguno" and cant_final_bat > 0:
+            peso_plomo = var_peso_manual if var_manual_bat else TABLA_PLOMO_AUTOMATICA.get(llave_busqueda, {}).get("peso", "-")
+            cant_total_plomo = cant_final_bat * cant_sistemas
+            str_bat_plomo = f"BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo}".strip()
+            add_fila_nativa("BAT_PLOMO", str_bat_plomo, cant_total_plomo, f"{BASE_DATOS_PLOMO[sap_final_bat]['alto']} x {BASE_DATOS_PLOMO[sap_final_bat]['ancho']} x {BASE_DATOS_PLOMO[sap_final_bat]['fondo']}", f"{peso_plomo} c/u")
+            
+        elif var_tipo_bat == "Litio" and cant_final_bat > 0:
+            peso_litio = var_peso_manual if var_manual_bat else TABLA_LITIO_AUTOMATICA.get(llave_busqueda, {}).get("peso", "-")
+            cant_dist = cant_final_bat // 4  
+            cant_total_dist = cant_dist * cant_sistemas
+            cant_total_litio = cant_final_bat * cant_sistemas
+            str_bat_litio = f"BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo}".strip()
+            
+            if cant_total_dist > 0:
+                add_fila_nativa("GAB_DIST", "GABINETE DE DISTRIBUCIÓN", cant_total_dist, f"{GABINETE_DIST_LITIO['alto']} x {GABINETE_DIST_LITIO['ancho']} x {GABINETE_DIST_LITIO['fondo']}", GABINETE_DIST_LITIO.get("peso", "-"))
+            add_fila_nativa("BAT_LITIO", str_bat_litio, cant_total_litio, f"{GABINETE_LITIO['alto']} x {GABINETE_LITIO['ancho']} x {GABINETE_LITIO['fondo']}", f"{peso_litio} c/u")
+
+        # Bloque Paralelo
+        if var_es_paralelo == "Paralelo":
+            if var_lleva_gabconx == "Sí":
+                add_fila_nativa("GAB_CONX", "GABINETE DE CONEXIÓN", 1, f"{BASE_DATOS_GABCONX[var_gabconx]['alto']} x {BASE_DATOS_GABCONX[var_gabconx]['ancho']} x {BASE_DATOS_GABCONX[var_gabconx]['fondo']}", BASE_DATOS_GABCONX[var_gabconx].get("peso", "-"))
+            add_fila_nativa("GAB_PAR", "GABINETE PARALELO", 1, f"{BASE_DATOS_GABPAR[var_gabpar]['alto']} x {BASE_DATOS_GABPAR[var_gabpar]['ancho']} x {BASE_DATOS_GABPAR[var_gabpar]['fondo']}", BASE_DATOS_GABPAR[var_gabpar].get("peso", "-"))
+
+        if var_tipo_bat in ["Plomo", "Litio"]:
+            st.markdown(f'<p style="font-size: 0.85rem; color: #9ca3af; margin-top: 8px; text-align: right;">* Tiempo de Respaldo del Sistema: <b>{var_tiempo_respaldo} Minutos</b></p>', unsafe_allow_html=True)
+            
+        # --- CÁLCULO DE CLIMATIZACIÓN PARA LA INTERFAZ ---
+        factor_carga = 0.80
+        ups_btu = int(kva_ups) * factor_carga * 217.0
+        btu_total_ui = ups_btu * cant_sistemas
+        if var_mod1 != "Ninguno" or var_mod2 != "Ninguno": btu_total_ui += int(kva_ups) * factor_carga * 131.84 * cant_sistemas
+        if var_tipo_bat == "Plomo": btu_total_ui += (ups_btu * 0.34) * cant_sistemas
+        elif var_tipo_bat == "Litio": btu_total_ui += (ups_btu * 0.26) * cant_sistemas
+        tr_total_ui = btu_total_ui / 12000.0
+
+        st.markdown(f"""
+        <div style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid #06b6d4; border-radius: 6px; padding: 12px; margin-top: 15px;">
+            <p style="color: #06b6d4; font-size: 0.95rem; font-weight: bold; margin: 0 0 5px 0;">❄️ REQUERIMIENTO TÉRMICO ESTIMADO:</p>
+            <p style="color: white; font-size: 0.9rem; margin: 0;">Disipación de Calor: {btu_total_ui:,.2f} BTU/h &nbsp;|&nbsp; Capacidad de Aire Acondicionado: {tr_total_ui:.2f} TR</p>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown("---")
 
     # ==========================================================
     # 4. FUNCIÓN MAESTRA DE INCRUSTACIÓN VECTORIAL
@@ -816,7 +991,12 @@ with st.container():
     def registrar_bloque(doc, archivo_dxf, nombre_bloque):
         ruta = os.path.join(CARPETA_BLOQUES, archivo_dxf)
         if nombre_bloque in doc.blocks: return True
-        if not os.path.exists(ruta): return False
+        if not os.path.exists(ruta): 
+            print(f"❌ DXF no encontrado: {archivo_dxf}")
+            return False
+        
+        print(f"------------------------------------------------------✅ Cargando DXF: {archivo_dxf}")
+        
         try:
             doc_origen = ezdxf.readfile(ruta)
             nuevo_bloque = doc.blocks.new(nombre_bloque)
@@ -846,10 +1026,19 @@ with st.container():
         sufijo_ups = "" if var_sufijo_ups == "HF" else var_sufijo_ups.strip()
         kva_ups = extraer_kva(modelo_base_ups)
         
-        # --- NUEVA LÓGICA DE NOMENCLATURA OFICIAL PARA EL TÍTULO ---
-        v_in = var_volt_entrada if "V" in var_volt_entrada or "D" in var_volt_entrada else f"{var_volt_entrada}V"
-        v_out = var_volt_salida if "V" in var_volt_salida or "D" in var_volt_salida else f"{var_volt_salida}V"
-        str_voltaje_oficial = f" VN: {v_in}" if var_volt_entrada == var_volt_salida else f" VE: {v_in} VS: {v_out}"
+        # --- NUEVA LÓGICA DE NOMENCLATURA OFICIAL PARA EL TÍTULO (TAPS) ---
+        def format_volt(v_str):
+            return v_str if v_str.endswith(("V", "D")) else f"{v_str}V"
+
+        if var_volt_entrada == var_volt_salida:
+            if var_volt_entrada == var_volt_nativo:
+                str_voltaje_oficial = f" VN: {format_volt(var_volt_nativo)}"
+            else:
+                str_voltaje_oficial = f" VN: {TAPS_VOLTAJE.get(var_volt_entrada, format_volt(var_volt_entrada))}"
+        else:
+            ve_str = TAPS_VOLTAJE.get(var_volt_entrada, format_volt(var_volt_entrada)) if var_volt_entrada != var_volt_nativo else format_volt(var_volt_entrada)
+            vs_str = TAPS_VOLTAJE.get(var_volt_salida, format_volt(var_volt_salida)) if var_volt_salida != var_volt_nativo else format_volt(var_volt_salida)
+            str_voltaje_oficial = f" VE: {ve_str} VS: {vs_str}"
         
         str_bat_oficial = ""
         if var_tipo_bat == "Litio" and cant_final_bat > 0:
@@ -1032,9 +1221,15 @@ with st.container():
         y_cota_base = y_base_start - (150 / FACTOR_ESCALA)
         y_cota_ext = y_ext_start - (150 / FACTOR_ESCALA)
         
+        # Lógica de nombres compactos por falta de espacio en equipos de 10 a 40 kVA
+        es_compacto = 10 <= int(kva_ups) <= 40
+        txt_cota_mod = "Mpot" if es_compacto else "MÓDULOS DE POTENCIA"
+        txt_cota_ups = "UPS" if es_compacto else nombre_cota_ups
+        txt_cota_bat = f"BB-{modelo_base_ups}-{minutos}" if es_compacto else nombre_cota_bat
+        
         if inicio_modulos_x is not None:
             msp.add_lwpolyline([(inicio_modulos_x, y_cota_base + tick), (inicio_modulos_x, y_cota_base), (fin_modulos_x, y_cota_base), (fin_modulos_x, y_cota_base + tick)], dxfattribs={'color': 7})
-            msp.add_text("MÓDULOS DE POTENCIA", dxfattribs={'height': 25 / FACTOR_ESCALA, 'color': 7}).set_placement(((inicio_modulos_x + fin_modulos_x) / 2, y_cota_base - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
+            msp.add_text(txt_cota_mod, dxfattribs={'height': 25 / FACTOR_ESCALA, 'color': 7}).set_placement(((inicio_modulos_x + fin_modulos_x) / 2, y_cota_base - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
         
         for i_d, f_d in cotas_distribucion:
             msp.add_lwpolyline([(i_d, y_cota_base + tick), (i_d, y_cota_base), (f_d, y_cota_base), (f_d, y_cota_base + tick)], dxfattribs={'color': 7})
@@ -1044,11 +1239,11 @@ with st.container():
             offset_y_cota = (120 / FACTOR_ESCALA) if cotas_distribucion else 0
             y_cota_global = y_cota_base - offset_y_cota
             msp.add_lwpolyline([(inicio_baterias_x, y_cota_global + tick), (inicio_baterias_x, y_cota_global), (fin_baterias_x, y_cota_global), (fin_baterias_x, y_cota_global + tick)], dxfattribs={'color': 7})
-            msp.add_text(nombre_cota_bat, dxfattribs={'height': 25 / FACTOR_ESCALA, 'color': 7}).set_placement(((inicio_baterias_x + fin_baterias_x) / 2, y_cota_global - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
+            msp.add_text(txt_cota_bat, dxfattribs={'height': 25 / FACTOR_ESCALA, 'color': 7}).set_placement(((inicio_baterias_x + fin_baterias_x) / 2, y_cota_global - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
         
         if inicio_ups_x is not None:
             msp.add_lwpolyline([(inicio_ups_x, y_cota_base + tick), (inicio_ups_x, y_cota_base), (fin_ups_x, y_cota_base), (fin_ups_x, y_cota_base + tick)], dxfattribs={'color': 7})
-            msp.add_text(nombre_cota_ups, dxfattribs={'height': 25 / FACTOR_ESCALA, 'color': 7}).set_placement(((inicio_ups_x + fin_ups_x) / 2, y_cota_base - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
+            msp.add_text(txt_cota_ups, dxfattribs={'height': 25 / FACTOR_ESCALA, 'color': 7}).set_placement(((inicio_ups_x + fin_ups_x) / 2, y_cota_base - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
         
         if inicio_gabconx_x is not None:
             msp.add_lwpolyline([(inicio_gabconx_x, y_cota_ext + tick), (inicio_gabconx_x, y_cota_ext), (fin_gabconx_x, y_cota_ext), (fin_gabconx_x, y_cota_ext + tick)], dxfattribs={'color': 7})
@@ -1128,15 +1323,33 @@ with st.container():
             txt_d = var_dibujo_otro if var_dibujo == "Nuevo/Otro..." else var_dibujo
             txt_r = var_reviso_otro if var_reviso == "Nuevo/Otro..." else var_reviso
             tam_letra = 1.5 * escala
-            m_dib_y, m_dib_x = 27.71 * escala, 420.55 * escala
-            m_proy_y, m_proy_x = 65.0 * escala, 420.55 * escala
+            
+            # El secreto: anclamos las coordenadas al borde derecho del cajetín (marco_w)
+            m_dib_y, m_dib_x = 27.71 * escala, (marco_w - 139.45) * escala
+            # Ajuste matemático con tus cotas: Y baja 26.38 (65.0 - 26.38) y X avanza 53.48
+            m_proy_y, m_proy_x = 38.62 * escala, (marco_w - 115.97) * escala
             pos_y_firmas = y_m + m_dib_y - (13.94 * escala)
             
             msp.add_text(txt_d, dxfattribs={'height': tam_letra, 'color': 2}).set_placement((x_m + m_dib_x - (99.01 * escala), pos_y_firmas), align=TextEntityAlignment.MIDDLE_CENTER)
             msp.add_text(fecha_hoy, dxfattribs={'height': tam_letra, 'color': 6}).set_placement((x_m + m_dib_x - (87.09 * escala), pos_y_firmas), align=TextEntityAlignment.MIDDLE_CENTER)
             msp.add_text(txt_r, dxfattribs={'height': tam_letra, 'color': 2}).set_placement((x_m + m_dib_x - (76.05 * escala), pos_y_firmas), align=TextEntityAlignment.MIDDLE_CENTER)
             msp.add_text(fecha_hoy, dxfattribs={'height': tam_letra, 'color': 6}).set_placement((x_m + m_dib_x - (63.65 * escala), pos_y_firmas), align=TextEntityAlignment.MIDDLE_CENTER)
-            msp.add_text(titulo_documento, dxfattribs={'height': 3.5 * escala, 'color': 7}).set_placement((x_m + m_proy_x - (30.0 * escala), y_m + m_proy_y), align=TextEntityAlignment.MIDDLE_LEFT)
+            msp.add_text(titulo_documento, dxfattribs={'height': 1.5 * escala, 'width': 0.7, 'color': 7}).set_placement((x_m + m_proy_x, y_m + m_proy_y), align=TextEntityAlignment.MIDDLE_LEFT)
+
+            # --- SECCIÓN: NÚMERO DE DIAGRAMA ---
+            # 1. Número normal en el cajetín (Abajo a la derecha)
+            # Ajuste: Sube 22.24 (9.12 + 22.24 = 31.36)
+            x_num_normal = x_m + (marco_w - 48.0) * escala
+            y_num_normal = y_m + (31.36) * escala
+            msp.add_text(var_num_orden, dxfattribs={'height': 5.0 * escala, 'color': 1}).set_placement((x_num_normal, y_num_normal), align=TextEntityAlignment.MIDDLE_CENTER)
+            
+            # 2. Número invertido en la esquina superior izquierda
+            # Ajuste: Sube 4.11 en Y (restando, porque está invertido) y avanza 5.09 en X
+            x_num_inv = x_m + (37.09) * escala
+            y_num_inv = y_m + (marco_h - 13.89) * escala
+            texto_inv = msp.add_text(var_num_orden, dxfattribs={'height': 5.0 * escala, 'color': 1})
+            texto_inv.set_placement((x_num_inv, y_num_inv), align=TextEntityAlignment.MIDDLE_CENTER)
+            texto_inv.dxf.rotation = 180
 
         min_x_dibujo, max_x_dibujo = 0, ancho_total_ensamble
         min_y_dibujo, max_y_dibujo = 0, y_vista + (100/FACTOR_ESCALA) 
@@ -1442,7 +1655,29 @@ with st.container():
         msp.add_lwpolyline([(x_cota_cuarto_y - tick, pared_trasera), (x_cota_cuarto_y + tick, pared_trasera)], dxfattribs={'color': 4})
         msp.add_text(f"FONDO MIN. CUARTO: {int(fondo_cuarto_real)} mm ({fondo_m:.2f} m)", dxfattribs={'height': h_text_cuarto_grande, 'color': 4}).set_placement((x_cota_cuarto_y + (120/FACTOR_ESCALA), (pared_frontal + pared_trasera)/2), align=TextEntityAlignment.MIDDLE_CENTER).dxf.rotation = 90
 
-        # (Se omite el texto de INDICACIONES a petición para un diseño más limpio)
+        # --- SECCIÓN: NOTA DE CLIMATIZACIÓN DXF ---
+        if marco_final == "C":
+            h_tit_clima = 5.0 * escala
+            h_txt_clima = 4.0 * escala
+            x_nota_clima = x_insert_marco2 + (marco_w * 0.52)
+            y_nota_clima = y_insert_marco2 + (74.48 * escala)
+            esp_linea = 7.0 * escala
+        elif marco_final == "D":
+            h_tit_clima = 5.5 * escala
+            h_txt_clima = 4.5 * escala
+            x_nota_clima = x_insert_marco2 + (marco_w * 0.66)
+            y_nota_clima = y_insert_marco2 + (79.72 * escala)
+            esp_linea = 10.5 * escala
+        else: # Marco E
+            h_tit_clima = 8.5 * escala
+            h_txt_clima = 7.0 * escala
+            x_nota_clima = x_insert_marco2 + (marco_w * 0.59)
+            y_nota_clima = y_insert_marco2 + (86.11 * escala)
+            esp_linea = 14.0 * escala
+            
+        msp.add_text("NOTA DE CLIMATIZACION ESTIMADA", dxfattribs={'height': h_tit_clima, 'color': 4}).set_placement((x_nota_clima, y_nota_clima), align=TextEntityAlignment.TOP_LEFT)
+        msp.add_text(f"- DISIPACION DE CALOR: {btu_total:,.2f} BTU/h", dxfattribs={'height': h_txt_clima, 'color': 7}).set_placement((x_nota_clima, y_nota_clima - esp_linea), align=TextEntityAlignment.TOP_LEFT)
+        msp.add_text(f"- CAPACIDAD AIRE ACONDICIONADO: {tr_total:.2f} TR (Toneladas de Refrigeracion)", dxfattribs={'height': h_txt_clima, 'color': 7}).set_placement((x_nota_clima, y_nota_clima - (esp_linea * 2)), align=TextEntityAlignment.TOP_LEFT)
 
         # --- NOMBRES Y COTAS DE ANCHO EN VISTA SUPERIOR ---
         factor_conv = FACTOR_ESCALA_BLOQUES / escala_b  # Convierte medidas de Hoja 1 a la nueva escala de Hoja 2
@@ -1453,7 +1688,7 @@ with st.container():
             i_x, f_x = start_x_top + (inicio_modulos_x * factor_conv), start_x_top + (fin_modulos_x * factor_conv)
             pts = [(i_x, y_cota_top + tick), (i_x, y_cota_top), (f_x, y_cota_top), (f_x, y_cota_top + tick)]
             msp.add_lwpolyline(pts, dxfattribs={'color': 7})
-            msp.add_text("MÓDULOS DE POTENCIA", dxfattribs={'height': h_text_eq, 'color': 7}).set_placement(((i_x + f_x) / 2, y_cota_top - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
+            msp.add_text(txt_cota_mod, dxfattribs={'height': h_text_eq, 'color': 7}).set_placement(((i_x + f_x) / 2, y_cota_top - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
         
         for i_d, f_d in cotas_distribucion:
             i_x, f_x = start_x_top + (i_d * factor_conv), start_x_top + (f_d * factor_conv)
@@ -1467,13 +1702,13 @@ with st.container():
             i_x, f_x = start_x_top + (inicio_baterias_x * factor_conv), start_x_top + (fin_baterias_x * factor_conv)
             pts = [(i_x, y_cota_global_top + tick), (i_x, y_cota_global_top), (f_x, y_cota_global_top), (f_x, y_cota_global_top + tick)]
             msp.add_lwpolyline(pts, dxfattribs={'color': 7})
-            msp.add_text(nombre_cota_bat, dxfattribs={'height': h_text_eq, 'color': 7}).set_placement(((i_x + f_x) / 2, y_cota_global_top - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
+            msp.add_text(txt_cota_bat, dxfattribs={'height': h_text_eq, 'color': 7}).set_placement(((i_x + f_x) / 2, y_cota_global_top - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
         
         if inicio_ups_x is not None:
             i_x, f_x = start_x_top + (inicio_ups_x * factor_conv), start_x_top + (fin_ups_x * factor_conv)
             pts = [(i_x, y_cota_top + tick), (i_x, y_cota_top), (f_x, y_cota_top), (f_x, y_cota_top + tick)]
             msp.add_lwpolyline(pts, dxfattribs={'color': 7})
-            msp.add_text(nombre_cota_ups, dxfattribs={'height': h_text_eq, 'color': 7}).set_placement(((i_x + f_x) / 2, y_cota_top - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
+            msp.add_text(txt_cota_ups, dxfattribs={'height': h_text_eq, 'color': 7}).set_placement(((i_x + f_x) / 2, y_cota_top - (40 / FACTOR_ESCALA)), align=TextEntityAlignment.TOP_CENTER)
         
         if gabconx_data:
             i_x, f_x = x_gconx, x_gconx + (gabconx_data[2]["ancho"]/escala_b)
@@ -1539,6 +1774,26 @@ with st.container():
 
     if btn_generar:
         try:
+            # Reemplazar temporalmente los pesos en la base de datos con los editados antes de generar
+            if var_mod1 != "Ninguno" and var_mod2 != "Ninguno":
+                BASE_DATOS_MODULOS[var_mod1]["peso"] = pesos_editados.get("MOD_ENT", BASE_DATOS_MODULOS[var_mod1].get("peso", ""))
+                BASE_DATOS_MODULOS[var_mod2]["peso"] = pesos_editados.get("MOD_SAL", BASE_DATOS_MODULOS[var_mod2].get("peso", ""))
+            else:
+                if var_mod1 != "Ninguno": BASE_DATOS_MODULOS[var_mod1]["peso"] = pesos_editados.get("MOD_POT1", BASE_DATOS_MODULOS[var_mod1].get("peso", ""))
+                if var_mod2 != "Ninguno": BASE_DATOS_MODULOS[var_mod2]["peso"] = pesos_editados.get("MOD_POT2", BASE_DATOS_MODULOS[var_mod2].get("peso", ""))
+            
+            BASE_DATOS_UPS[var_ups]["peso"] = pesos_editados.get("UPS", BASE_DATOS_UPS[var_ups].get("peso", ""))
+            
+            if var_tipo_bat == "Plomo" and sap_final_bat != "Ninguno" and cant_final_bat > 0:
+                BASE_DATOS_PLOMO[sap_final_bat]["peso"] = pesos_editados.get("BAT_PLOMO", "").replace(" c/u", "")
+            elif var_tipo_bat == "Litio" and cant_final_bat > 0:
+                GABINETE_LITIO["peso"] = pesos_editados.get("BAT_LITIO", "").replace(" c/u", "")
+                if pesos_editados.get("GAB_DIST"): GABINETE_DIST_LITIO["peso"] = pesos_editados.get("GAB_DIST")
+
+            if var_es_paralelo == "Paralelo":
+                if var_lleva_gabconx == "Sí": BASE_DATOS_GABCONX[var_gabconx]["peso"] = pesos_editados.get("GAB_CONX", BASE_DATOS_GABCONX[var_gabconx].get("peso", ""))
+                BASE_DATOS_GABPAR[var_gabpar]["peso"] = pesos_editados.get("GAB_PAR", BASE_DATOS_GABPAR[var_gabpar].get("peso", ""))
+
             dxf_data, file_name = crear_dxf()
             
             with col_msg:
