@@ -157,26 +157,26 @@ def calcular_peso_transformador(kva, v_in, v_out):
     return peso_tr
 
 BASE_DATOS_GABPAR = {
-    "265233": {"alto": 1020, "ancho": 855, "fondo": 300, "peso": "", "dxf": "gabpar_265233"},
-    "265191": {"alto": 1860, "ancho": 1575, "fondo": 1270, "peso": "", "dxf": "gabpar_265191"},
-    "265400": {"alto": 1950, "ancho": 1136, "fondo": 1200, "peso": "", "dxf": "gabpar_265400"},
-    "264885": {"alto": 842, "ancho": 635, "fondo": 247, "peso": "", "dxf": "gabpar_264885"},
-    "264840": {"alto": 596, "ancho": 445, "fondo": 123, "peso": "", "dxf": "gabpar_264840"}
+    "265233": {"alto": 1020, "ancho": 855, "fondo": 300, "peso": "-", "dxf": "gabpar_265233"},
+    "265191": {"alto": 1860, "ancho": 1575, "fondo": 1270, "peso": 322, "dxf": "gabpar_265191"},
+    "265400": {"alto": 1950, "ancho": 1136, "fondo": 1200, "peso": "-", "dxf": "gabpar_265400"},
+    "264885": {"alto": 842, "ancho": 635, "fondo": 247, "peso": "-", "dxf": "gabpar_264885"},
+    "264840": {"alto": 596, "ancho": 445, "fondo": 123, "peso": "-", "dxf": "gabpar_264840"}
 }
 
 BASE_DATOS_GABCONX = {
-    "SAP_CONX1": {"alto": 1950, "ancho": 600, "fondo": 900, "dxf": "gabconx_SAP"},
-    "SAP_CONX2": {"alto": 1950, "ancho": 800, "fondo": 900, "dxf": "gabconx_SAP2"}
+    "SAP_CONX1": {"alto": 1950, "ancho": 600, "fondo": 900, "peso": "-", "dxf": "gabconx_SAP"},
+    "SAP_CONX2": {"alto": 1950, "ancho": 800, "fondo": 900, "peso": "-", "dxf": "gabconx_SAP2"}
 }
 
 BASE_DATOS_PLOMO = {
-    "Ninguno": {"alto": 0, "ancho": 0, "fondo": 0, "dxf": None},
-    "262702": {"alto": 1600, "ancho": 623, "fondo": 900, "dxf": "bat_262702"}, "262730": {"alto": 1600, "ancho": 1100, "fondo": 900, "dxf": "bat_262730"},
-    "263243": {"alto": 2000, "ancho": 800, "fondo": 1100, "dxf": "bat_263243"}, "263530": {"alto": 2100, "ancho": 900, "fondo": 1200, "dxf": "bat_263530"},
-    "264270": {"alto": 2110, "ancho": 850, "fondo": 1150, "dxf": "bat_264270"}, "264303": {"alto": 1800, "ancho": 800, "fondo": 1000, "dxf": "bat_264303"},
-    "264340": {"alto": 1250, "ancho": 800, "fondo": 1000, "dxf": "bat_264340"}, "265023": {"alto": 2110, "ancho": 813, "fondo": 1245, "dxf": "bat_265023"},
-    "265025": {"alto": 2110, "ancho": 813, "fondo": 1245, "dxf": "bat_265025"}, "265026": {"alto": 2110, "ancho": 813, "fondo": 1245, "dxf": "bat_265026"},
-    "330900": {"alto": 1800, "ancho": 1120, "fondo": 1000, "dxf": "bat_330900"}, "330904": {"alto": 1600, "ancho": 959, "fondo": 825, "dxf": "bat_330904"}
+    "Ninguno": {"alto": 0, "ancho": 0, "fondo": 0, "peso": "-", "dxf": None},
+    "262702": {"alto": 1600, "ancho": 623, "fondo": 900, "peso": 127, "dxf": "bat_262702"}, "262730": {"alto": 1600, "ancho": 1100, "fondo": 900, "peso": 137, "dxf": "bat_262730"},
+    "263243": {"alto": 2000, "ancho": 800, "fondo": 1100, "peso": 237, "dxf": "bat_263243"}, "263530": {"alto": 2100, "ancho": 900, "fondo": 1200, "peso": 270, "dxf": "bat_263530"},
+    "264270": {"alto": 2110, "ancho": 850, "fondo": 1150, "peso": 270, "dxf": "bat_264270"}, "264303": {"alto": 1800, "ancho": 800, "fondo": 1000, "peso": 224, "dxf": "bat_264303"},
+    "264340": {"alto": 1250, "ancho": 800, "fondo": 1000, "peso": 180, "dxf": "bat_264340"}, "265023": {"alto": 2110, "ancho": 813, "fondo": 1245, "peso": 358, "dxf": "bat_265023"},
+    "265025": {"alto": 2110, "ancho": 813, "fondo": 1245, "peso": "-", "dxf": "bat_265025"}, "265026": {"alto": 2110, "ancho": 813, "fondo": 1245, "peso": "-", "dxf": "bat_265026"},
+    "330900": {"alto": 1800, "ancho": 1120, "fondo": 1000, "peso": 216, "dxf": "bat_330900"}, "330904": {"alto": 1600, "ancho": 959, "fondo": 825, "peso": 162, "dxf": "bat_330904"}
 }
 
 GABINETE_LITIO = {"alto": 2000, "ancho": 600, "fondo": 860, "dxf": "bat_litio"}
@@ -426,10 +426,16 @@ with col_cfg1:
                     if img_bat: st.image(img_bat, caption=f"SAP: {var_plomo}", width=120)
                 else: sap_final_bat = "Litio"
                 
-                c1, c2 = st.columns(2)
+                # --- NUEVO: 3 COLUMNAS PARA INCLUIR MINUTOS MANUALES ---
+                c1, c2, c3 = st.columns(3)
                 with c1: var_cant_baterias = st.selectbox("Cantidad:", ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"])
-                with c2: var_peso_manual = st.text_input("Peso Manual (Kg):", "")
+                # Tomamos el valor de la lista como sugerencia inicial, pero permitimos edición
+                with c2: var_tiempo_manual = st.text_input("Respaldo:", value=var_tiempo_respaldo)
+                with c3: var_peso_manual = st.text_input("Peso (Kg):", "")
+                
                 cant_final_bat = int(var_cant_baterias)
+                # Sobrescribimos la variable maestra para que inyecte este nuevo valor en el Título y el DXF
+                var_tiempo_respaldo = var_tiempo_manual
 
     with col_cfg4:
     # --- SECCIÓN 4: DATOS DEL CAJETÍN ---
@@ -479,9 +485,9 @@ with col_cfg1:
         
         str_bat_oficial = ""
         if var_tipo_bat == "Litio" and cant_final_bat > 0:
-            str_bat_oficial = f" + BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo}"
+            str_bat_oficial = f" + BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo.zfill(2)}"
         elif var_tipo_bat == "Plomo" and cant_final_bat > 0:
-            str_bat_oficial = f" + BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo}"
+            str_bat_oficial = f" + BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo.zfill(2)}"
             
         str_paralelo_oficial = ""
         cant_sistemas_titulo = int(var_cant_ups_paralelo) if var_es_paralelo == "Paralelo" else 1
@@ -521,12 +527,17 @@ with st.expander("📖 VER CATÁLOGO"):
         <th style="padding: 12px; width: 150px; text-align: center;">Visualización</th>
         <th style="padding: 12px;">Código SAP</th>
         <th style="padding: 12px;">Dimensiones (Al x An x Fo) mm</th>
+        <th style="padding: 12px;">Peso Vacío (Kg)</th>
         </tr>"""
         
         for sap, datos in diccionario.items():
             if sap == "Ninguno": continue
             ruta_img = obtener_imagen(datos.get("dxf"))
             if ruta_img:
+                # Extraer peso (soporta 'peso_vacio' para módulos y 'peso' para el resto)
+                peso_val = datos.get("peso_vacio", datos.get("peso", "-"))
+                peso_str = f"{peso_val} kg" if str(peso_val).strip() and str(peso_val).strip() != "-" else "-"
+                
                 # Convertimos la imagen a Base64 para incrustarla en el HTML
                 with open(ruta_img, "rb") as f:
                     b64 = base64.b64encode(f.read()).decode("utf-8")
@@ -537,6 +548,7 @@ with st.expander("📖 VER CATÁLOGO"):
                 <td style="padding: 12px; text-align: center;">{img_tag}</td>
                 <td style="padding: 12px; font-weight: bold; color: #60a5fa; vertical-align: middle;">{sap}</td>
                 <td style="padding: 12px; vertical-align: middle;">{datos['alto']} x {datos['ancho']} x {datos['fondo']}</td>
+                <td style="padding: 12px; vertical-align: middle; color: #eab308; font-weight: 500;">{peso_str}</td>
                 </tr>"""
         html += "</table>"
         return html
@@ -945,7 +957,7 @@ with st.container():
         if var_tipo_bat == "Plomo" and sap_final_bat != "Ninguno" and cant_final_bat > 0:
             peso_plomo = var_peso_manual if var_manual_bat else TABLA_PLOMO_AUTOMATICA.get(llave_busqueda, {}).get("peso", "-")
             cant_total_plomo = cant_final_bat * cant_sistemas
-            str_bat_plomo = f"BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo}".strip()
+            str_bat_plomo = f"BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo.zfill(2)}".strip()
             add_fila_nativa("BAT_PLOMO", str_bat_plomo, cant_total_plomo, f"{BASE_DATOS_PLOMO[sap_final_bat]['alto']} x {BASE_DATOS_PLOMO[sap_final_bat]['ancho']} x {BASE_DATOS_PLOMO[sap_final_bat]['fondo']}", f"{peso_plomo} c/u")
             
         elif var_tipo_bat == "Litio" and cant_final_bat > 0:
@@ -953,7 +965,7 @@ with st.container():
             cant_dist = cant_final_bat // 4  
             cant_total_dist = cant_dist * cant_sistemas
             cant_total_litio = cant_final_bat * cant_sistemas
-            str_bat_litio = f"BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo}".strip()
+            str_bat_litio = f"BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo.zfill(2)}".strip()
             
             if cant_total_dist > 0:
                 add_fila_nativa("GAB_DIST", "GABINETE DE DISTRIBUCIÓN", cant_total_dist, f"{GABINETE_DIST_LITIO['alto']} x {GABINETE_DIST_LITIO['ancho']} x {GABINETE_DIST_LITIO['fondo']}", GABINETE_DIST_LITIO.get("peso", "-"))
@@ -1042,9 +1054,9 @@ with st.container():
         
         str_bat_oficial = ""
         if var_tipo_bat == "Litio" and cant_final_bat > 0:
-            str_bat_oficial = f" + BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo}"
+            str_bat_oficial = f" + BBIL-IND HF {modelo_base_ups}-{var_tiempo_respaldo.zfill(2)}"
         elif var_tipo_bat == "Plomo" and cant_final_bat > 0:
-            str_bat_oficial = f" + BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo}"
+            str_bat_oficial = f" + BAT-IND HF {modelo_base_ups}-{var_tiempo_respaldo.zfill(2)}"
             
         str_paralelo_oficial = ""
         cant_sistemas_titulo = int(var_cant_ups_paralelo) if var_es_paralelo == "Paralelo" else 1
