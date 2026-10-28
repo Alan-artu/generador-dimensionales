@@ -292,6 +292,26 @@ with col_cfg1:
         # Muestra visualmente el modelo base, y SOLO mantiene el voltaje para el 1360
         with col_ups: var_ups = st.selectbox("Modelo UPS:", lista_ups_filtrada, index=idx_ups_default, format_func=lambda x: x if "1360 " in x else x.split()[0])
 
+        # --- LÓGICA DE VOLTAJES (NATIVO, ENTRADA Y SALIDA) ---
+        idx_v = 4 
+        if "127" in var_ups or var_ups in ["1310", "1320", "1330", "1380", "13100"]: idx_v = 1 
+        elif "230" in var_ups or var_ups in ["1340", "13120", "13160", "13200"]: idx_v = 3 
+        elif "277" in var_ups: idx_v = 6 
+            
+        opciones_nativo = ["230/400"] # Fallback
+        if "127" in var_ups: opciones_nativo = ["127/220"]
+        elif "230" in var_ups: opciones_nativo = ["230/400"]
+        elif "277" in var_ups: opciones_nativo = ["277/480"]
+        elif var_ups in ["1310", "1315", "1320", "1330"]: opciones_nativo = ["120/208", "127/220"]
+        elif var_ups in ["1380", "13100"]: opciones_nativo = ["120/208", "127/220", "230/400"]
+        
+        var_volt_nativo = st.selectbox("Voltaje Nativo del UPS:", opciones_nativo)
+
+        col_v1, col_v2 = st.columns(2)
+        with col_v1: var_volt_entrada = st.selectbox("Voltaje de Entrada:", LISTA_VOLTAJES, index=idx_v)
+        with col_v2: var_volt_salida = st.selectbox("Voltaje de Salida:", LISTA_VOLTAJES, index=idx_v)
+        st.markdown("<hr style='margin: 0.8em 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);'>", unsafe_allow_html=True) # Separador visual
+
         # Inicialización forzada por defecto en "Ninguno" para el estandar de la empresa
         var_cant_mods = st.selectbox("Cantidad de Módulos de Potencia:", ["Ninguno", "1", "2"], index=0)
         
@@ -443,26 +463,6 @@ with col_cfg1:
             st.markdown("""<div style="background-color: #f59e0b; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);"><h3 style="margin:0; font-size: 1.2rem; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">📝 Datos del Cajetín</h3></div>""", unsafe_allow_html=True)
         
         var_num_orden = st.text_input("No. de Diagrama:", "000000")
-        
-        idx_v = 4 
-        if var_cant_mods == "Ninguno":
-            if "127" in var_ups or var_ups in ["1310", "1320", "1330", "1380", "13100"]: idx_v = 1 
-            elif "230" in var_ups or var_ups in ["1340", "13120", "13160", "13200"]: idx_v = 3 
-            elif "277" in var_ups: idx_v = 6 
-            
-        # --- LÓGICA INTELIGENTE DE VOLTAJE NATIVO ---
-        opciones_nativo = ["230/400"] # Fallback
-        if "127" in var_ups: opciones_nativo = ["127/220"]
-        elif "230" in var_ups: opciones_nativo = ["230/400"]
-        elif "277" in var_ups: opciones_nativo = ["277/480"]
-        elif var_ups in ["1310", "1315", "1320", "1330"]: opciones_nativo = ["120/208", "127/220"]
-        elif var_ups in ["1380", "13100"]: opciones_nativo = ["120/208", "127/220", "230/400"]
-        
-        var_volt_nativo = st.selectbox("Voltaje Nativo del UPS:", opciones_nativo)
-
-        col_v1, col_v2 = st.columns(2)
-        with col_v1: var_volt_entrada = st.selectbox("Voltaje de Entrada (Cliente):", LISTA_VOLTAJES, index=idx_v)
-        with col_v2: var_volt_salida = st.selectbox("Voltaje de Salida (Cliente):", LISTA_VOLTAJES, index=idx_v)
         
         modelo_base_ups = var_ups.split()[0]
         minutos_str = var_tiempo_respaldo.zfill(2) 
