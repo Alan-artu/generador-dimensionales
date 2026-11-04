@@ -353,10 +353,15 @@ with col_cfg1:
         modulo_detectado = "Ninguno"
         
         if var_ups.startswith("13"):
-            for sap, datos in BASE_DATOS_MODULOS.items():
-                if sap != "Ninguno" and datos["alto"] == alto_ups:
-                    modulo_detectado = sap
-                    break
+            if "MR1" in var_ups:
+                # Excepción directa: Los MR1 (2010mm) usan el módulo R1 (2000mm)
+                modulo_detectado = "264450_R1"
+            else:
+                # Búsqueda normal por altura exacta para el resto
+                for sap, datos in BASE_DATOS_MODULOS.items():
+                    if sap != "Ninguno" and datos["alto"] == alto_ups:
+                        modulo_detectado = sap
+                        break
 
         lista_mods = list(BASE_DATOS_MODULOS.keys())
         idx_ninguno = lista_mods.index("Ninguno")
