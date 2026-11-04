@@ -88,14 +88,44 @@ BASE_DATOS_UPS = {
     "13600 230V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1100, "dxf": "ups_13600_230"}, "13600 277V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1100, "dxf": "ups_13600_277"},
     "13800 230V": {"alto": 1950, "ancho": 1900, "fondo": 900, "peso": 1450, "dxf": "ups_13800_230"}, "13800 277V": {"alto": 1950, "ancho": 1400, "fondo": 900, "peso": 1150, "dxf": "ups_13800_277"},
     "131000 230V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131000_230"}, "131000 277V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131000_277"},
-    "131200 230V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131200_230"}, "131200 277V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131200_277"}
+    "131200 230V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131200_230"}, "131200 277V": {"alto": 1950, "ancho": 3000, "fondo": 900, "peso": 2400, "dxf": "ups_131200_277"},
+    # --- NUEVA FAMILIA R1 ---
+    "1380 R1": {"alto": 2000, "ancho": 600, "fondo": 800, "peso": 630, "dxf": "ups_1380_R1"},
+    "13120 R1": {"alto": 2000, "ancho": 1000, "fondo": 800, "peso": 800, "dxf": "ups_13120_R1"},
+    "13200 R1": {"alto": 2000, "ancho": 1000, "fondo": 800, "peso": 1095, "dxf": "ups_13200_R1"},
+    # --- NUEVA FAMILIA MR1 ---
+    # Peso base vacío: 273 kg. Los transformadores se sumarán automáticamente en otra función.
+    "1320 MR1": {"alto": 2010, "ancho": 600, "fondo": 1100, "peso": 273, "dxf": "ups_mr1_base"},
+    "1340 MR1": {"alto": 2010, "ancho": 600, "fondo": 1100, "peso": 273, "dxf": "ups_mr1_base"},
+    "1360 MR1": {"alto": 2010, "ancho": 600, "fondo": 1100, "peso": 273, "dxf": "ups_mr1_base"},
+    "1380 MR1": {"alto": 2010, "ancho": 600, "fondo": 1100, "peso": 273, "dxf": "ups_mr1_base"},
+    "13100 MR1": {"alto": 2010, "ancho": 600, "fondo": 1100, "peso": 273, "dxf": "ups_mr1_base"},
+    "13120 MR1": {"alto": 2010, "ancho": 600, "fondo": 1100, "peso": 273, "dxf": "ups_mr1_base"},
+    "13140 MR1": {"alto": 2010, "ancho": 600, "fondo": 1100, "peso": 273, "dxf": "ups_mr1_base"}
+}
+
+# --- NUEVA TABLA DE PESOS DE BATERÍAS INTERNAS MR1 ---
+PESOS_MR1_INTERNO = {
+    ("1320 MR1", "05"): 457.2, ("1320 MR1", "10"): 507.6, ("1320 MR1", "15"): 558.0,
+    ("1340 MR1", "05"): 591.0, ("1340 MR1", "10"): 691.8, ("1340 MR1", "13"): 742.2,
+    ("1360 MR1", "05"): 724.8, ("1360 MR1", "07"): 775.2,
+    ("1380 MR1", "04"): 808.2
+}
+# --- NUEVA TABLA DE PESOS DE BATERÍAS INTERNAS COMPACTOS (10-40 kVA) ---
+PESOS_COMPACTOS_INTERNO = {
+    ("1310", "05"): 143.4, ("1310", "12"): 183.72, ("1310", "15"): 193.8, ("1310", "20"): 213.96, ("1310", "26"): 244.2,
+    ("1315", "05"): 189.64, ("1315", "10"): 229.96, ("1315", "15"): 260.2,
+    ("1320", "04"): 209.8, ("1320", "10"): 260.2,
+    ("1330", "05"): 278.28, ("1330", "07"): 318.6,
+    ("1340", "05"): 290.6
 }
 
 BASE_DATOS_MODULOS = {
     "Ninguno": {"alto": 0, "ancho": 0, "fondo": 0, "dxf": None, "peso_vacio": 0},
     "263361": {"alto": 1100, "ancho": 447, "fondo": 901, "dxf": "mod_263361", "peso_vacio": 82}, "264145": {"alto": 1200, "ancho": 600, "fondo": 900, "dxf": "mod_264145", "peso_vacio": 96},
     "264172": {"alto": 1250, "ancho": 600, "fondo": 900, "dxf": "mod_264172", "peso_vacio": 96}, "264175": {"alto": 1950, "ancho": 1136, "fondo": 1200, "dxf": "mod_264175", "peso_vacio": 130},
-    "264450": {"alto": 1800, "ancho": 715, "fondo": 1000, "dxf": "mod_264450", "peso_vacio": 130}, "264600": {"alto": 440, "ancho": 260, "fondo": 680, "dxf": "mod_264600", "peso_vacio": 17}
+    "264450": {"alto": 1800, "ancho": 715, "fondo": 1000, "dxf": "mod_264450", "peso_vacio": 130}, "264600": {"alto": 440, "ancho": 260, "fondo": 680, "dxf": "mod_264600", "peso_vacio": 17},
+    "264450_R1": {"alto": 2000, "ancho": 720, "fondo": 1000, "dxf": "mod_264450_R1", "peso_vacio": 130}
 }
 
 # Matriz estandarizada de Transformadores
@@ -285,24 +315,28 @@ with col_cfg1:
                 if es_gigante and "277V" in modelo: lista_ups_filtrada.append(modelo)
             elif var_sufijo_ups == "HF":
                 if es_gigante and "230V" in modelo: lista_ups_filtrada.append(modelo)
+            elif var_sufijo_ups == "R1":
+                if " R1" in modelo: lista_ups_filtrada.append(modelo)
+            elif var_sufijo_ups == "MR1":
+                if " MR1" in modelo: lista_ups_filtrada.append(modelo)
             else:
-                if not es_gigante: lista_ups_filtrada.append(modelo)
+                if not es_gigante and " R1" not in modelo and " MR1" not in modelo: lista_ups_filtrada.append(modelo)
 
         idx_ups_default = lista_ups_filtrada.index("1310") if "1310" in lista_ups_filtrada else 0
-        # Muestra visualmente el modelo base, y SOLO mantiene el voltaje para el 1360
-        with col_ups: var_ups = st.selectbox("Modelo UPS:", lista_ups_filtrada, index=idx_ups_default, format_func=lambda x: x if "1360 " in x else x.split()[0])
+        # Muestra visualmente el modelo base, y SOLO mantiene el voltaje para los 1360 clásicos (ignorando MR1)
+        with col_ups: var_ups = st.selectbox("Modelo UPS:", lista_ups_filtrada, index=idx_ups_default, format_func=lambda x: x if "1360 " in x and "MR1" not in x else x.split()[0])
 
-        # --- LÓGICA DE VOLTAJES (NATIVO, ENTRADA Y SALIDA) ---
+        # --- LÓGICA DE VOLTAJES (NATIVO, ENTRADA Y SALIDA CON R1 Y MR1) ---
         idx_v = 4 
-        if "127" in var_ups or var_ups in ["1310", "1320", "1330", "1380", "13100"]: idx_v = 1 
-        elif "230" in var_ups or var_ups in ["1340", "13120", "13160", "13200"]: idx_v = 3 
+        if "127" in var_ups or "MR1" in var_ups or var_ups in ["1310", "1320", "1330", "1380", "13100"]: idx_v = 1 
+        elif "230" in var_ups or "R1" in var_ups or var_ups in ["1340", "13120", "13160", "13200"]: idx_v = 3 
         elif "277" in var_ups: idx_v = 6 
             
         opciones_nativo = ["230/400"] # Fallback
         if "127" in var_ups: opciones_nativo = ["127/220"]
-        elif "230" in var_ups: opciones_nativo = ["230/400"]
+        elif "230" in var_ups or "R1" in var_ups: opciones_nativo = ["230/400"]
         elif "277" in var_ups: opciones_nativo = ["277/480"]
-        elif var_ups in ["1310", "1315", "1320", "1330"]: opciones_nativo = ["120/208", "127/220"]
+        elif var_ups in ["1310", "1315", "1320", "1330"] or "MR1" in var_ups: opciones_nativo = ["120/208", "127/220"]
         elif var_ups in ["1380", "13100"]: opciones_nativo = ["120/208", "127/220", "230/400"]
         
         var_volt_nativo = st.selectbox("Voltaje Nativo del UPS:", opciones_nativo)
@@ -390,26 +424,52 @@ with col_cfg1:
         # EXTRACCIÓN TEMPRANA PARA FILTRADO INTELIGENTE
         kva = extraer_kva(var_ups)
         
-        # --- NUEVA LÓGICA: RESTRICCIÓN DE LITIO PARA 1360 127-220V ---
-        opciones_bateria = ["Ninguno", "Plomo"] if var_ups == "1360 127-220V" else ["Ninguno", "Plomo", "Litio"]
+        # --- NUEVA LÓGICA: RESTRICCIÓN DE LITIO Y BATERÍAS INTERNAS (MR1 Y COMPACTOS) ---
+        es_mr1 = "MR1" in var_ups
+        modelo_base = var_ups.split()[0]
+        es_compacto = modelo_base in ["1310", "1315", "1320", "1330", "1340"] and not es_mr1
+        kva_num = int(kva) if kva.isdigit() else 0
+        
+        # Inyectar "Interno" para los MR1 (<=80 kVA) y los compactos (10 a 40 kVA)
+        opciones_bateria = ["Ninguno", "Plomo", "Litio"]
+        if var_ups == "1360 127-220V": opciones_bateria = ["Ninguno", "Plomo"]
+        if (es_mr1 and kva_num <= 80) or es_compacto: opciones_bateria.insert(0, "Interno")
         
         col_bat1, col_bat2 = st.columns(2)
         with col_bat1: 
-            var_tipo_bat = st.selectbox("Tipo de Batería:", opciones_bateria, index=1)
+            idx_bat_default = 0 if ((es_mr1 and kva_num <= 80) or es_compacto) else (1 if "Plomo" in opciones_bateria else 0)
+            var_tipo_bat = st.selectbox("Tipo de Batería:", opciones_bateria, index=idx_bat_default)
             if var_ups == "1360 127-220V":
                 st.caption("⚠️ Baterías de Litio no compatibles con UPS 1360 nativo en 127-220V.")
         
         minutos_disponibles = []
+        formato_tiempo = lambda x: x
+        
         if var_tipo_bat == "Plomo":
             minutos_disponibles = sorted(list(set([int(k.split("-")[1]) for k in TABLA_PLOMO_AUTOMATICA.keys() if k.startswith(f"{kva}-")])))
         elif var_tipo_bat == "Litio":
             minutos_disponibles = sorted(list(set([int(k.split("-")[1]) for k in TABLA_LITIO_AUTOMATICA.keys() if k.startswith(f"{kva}-")])))
+        elif var_tipo_bat == "Interno":
+            if es_mr1:
+                if kva_num == 20: minutos_disponibles = [5, 10, 15]
+                elif kva_num == 40: minutos_disponibles = [5, 10, 13]
+                elif kva_num == 60: minutos_disponibles = [5, 7]
+                elif kva_num == 80: minutos_disponibles = [4]
+            elif es_compacto:
+                if kva_num == 10: minutos_disponibles = [5, 12, 15, 20, 26]
+                elif kva_num == 15: minutos_disponibles = [5, 10, 15]
+                elif kva_num == 20: minutos_disponibles = [4, 10]
+                elif kva_num == 30: minutos_disponibles = [5, 7]
+                elif kva_num == 40: minutos_disponibles = [5]
+            formato_tiempo = lambda x: f"{x} (interno)"
             
         opciones_minutos = [str(m) for m in minutos_disponibles] if minutos_disponibles else ["5"]
         
         with col_bat2:
-            if var_tipo_bat != "Ninguno": var_tiempo_respaldo = st.selectbox("Respaldo (Minutos):", opciones_minutos)
-            else: var_tiempo_respaldo = "0"
+            if var_tipo_bat != "Ninguno": 
+                var_tiempo_respaldo = st.selectbox("Respaldo (Minutos):", opciones_minutos, format_func=formato_tiempo)
+            else: 
+                var_tiempo_respaldo = "0"
 
         var_manual_bat = False
         var_plomo = "Ninguno"
@@ -1794,6 +1854,26 @@ with st.container():
                 if var_mod1 != "Ninguno": BASE_DATOS_MODULOS[var_mod1]["peso"] = pesos_editados.get("MOD_POT1", BASE_DATOS_MODULOS[var_mod1].get("peso", ""))
                 if var_mod2 != "Ninguno": BASE_DATOS_MODULOS[var_mod2]["peso"] = pesos_editados.get("MOD_POT2", BASE_DATOS_MODULOS[var_mod2].get("peso", ""))
             
+            # --- LÓGICA DE PESO INTELIGENTE PARA MR1 Y COMPACTOS ---
+            es_mr1 = "MR1" in var_ups
+            modelo_base = var_ups.split()[0]
+            es_compacto = modelo_base in ["1310", "1315", "1320", "1330", "1340"] and not es_mr1
+            kva_ups_num = int(kva_ups)
+        
+            if es_mr1:
+                if var_tipo_bat == "Interno" and kva_ups_num <= 80:
+                    clave_pesos_mr1 = (var_ups, minutos_str)
+                    peso_original = PESOS_MR1_INTERNO.get(clave_pesos_mr1, 273 + ((kva_ups_num // 20) * 33))
+                else:
+                    peso_original = 273 + ((kva_ups_num // 20) * 33)
+                BASE_DATOS_UPS[var_ups]["peso"] = peso_original
+                
+            elif es_compacto and var_tipo_bat == "Interno":
+                clave_pesos_comp = (modelo_base, minutos_str)
+                if clave_pesos_comp in PESOS_COMPACTOS_INTERNO:
+                    BASE_DATOS_UPS[var_ups]["peso"] = PESOS_COMPACTOS_INTERNO[clave_pesos_comp]
+
+            # Mantenemos tu línea original para que respete tu tabla de pesos editables
             BASE_DATOS_UPS[var_ups]["peso"] = pesos_editados.get("UPS", BASE_DATOS_UPS[var_ups].get("peso", ""))
             
             if var_tipo_bat == "Plomo" and sap_final_bat != "Ninguno" and cant_final_bat > 0:
