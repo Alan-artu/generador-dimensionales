@@ -1063,8 +1063,206 @@ with st.container():
         st.markdown("---")
 
     # ==========================================================
-    # 4. FUNCIÓN MAESTRA DE INCRUSTACIÓN VECTORIAL
+    # 4. FUNCIÓN MAESTRA DE INCRUSTACIÓN VECTORIAL Y PDF
     # ==========================================================
+    # ==========================================================
+    # 4. FUNCIÓN MAESTRA DE INCRUSTACIÓN VECTORIAL Y PDF
+    # ==========================================================
+    def generar_pdf_desde_dxf(doc):
+        from matplotlib.backends.backend_pdf import PdfPages
+        from ezdxf.addons.drawing import RenderContext, Frontend
+        from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
+        from ezdxf.addons.drawing.config import Configuration, BackgroundPolicy, ColorPolicy
+        import matplotlib.font_manager as fm
+        import matplotlib.pyplot as plt
+        import io
+        import re
+        import os
+        
+        # --- OPTIMIZACIÓN CONSERVADA: Ignora vértices inútiles ---
+        plt.rcParams['path.simplify'] = True
+        plt.rcParams['path.simplify_threshold'] = 1.0
+        
+        # --- LÓGICA DE FUENTES RESTAURADA (ARIAL BOLD) ---
+        directorio_actual = os.path.dirname(os.path.abspath(__file__))
+        ruta_absoluta_fuente = os.path.join(directorio_actual, "ARIALBD.TTF")
+        nombre_fuente = "sans-serif" 
+        
+        if os.path.exists(ruta_absoluta_fuente):
+            try:
+                fm.fontManager.addfont(ruta_absoluta_fuente)
+                prop = fm.FontProperties(fname=ruta_absoluta_fuente)
+                nombre_fuente = prop.get_name()
+                from ezdxf import fonts
+                fonts.font_manager.add_font(ruta_absoluta_fuente)
+            except Exception: pass
+                
+        for style in doc.styles:
+            style.dxf.font = nombre_fuente
+            if style.has_dxf_attrib("shx_file"):
+                del style.dxf.shx_file
+                
+        if "EstiloLimpio" not in doc.styles:
+            doc.styles.new("EstiloLimpio", dxfattribs={"font": nombre_fuente})
+            
+        for layout in [doc.modelspace()] + list(doc.blocks):
+            for entity in layout.query('TEXT MTEXT ATTRIB ATTDEF'):
+                entity.dxf.style = "EstiloLimpio"
+                if entity.dxftype() == 'MTEXT' and hasattr(entity, 'text') and entity.text:
+                    entity.text = re.sub(r'\\F[^;]+;', '', entity.text)
+        # ------------------------------------------------
+        
+        config = Configuration(
+            background_policy=BackgroundPolicy.CUSTOM, custom_bg_color="#FFFFFF",
+            color_policy=ColorPolicy.BLACK, min_lineweight=0.3, lineweight_scaling=1.0    
+        )
+        
+        pdf_buffer = io.BytesIO()
+        with PdfPages(pdf_buffer) as pdf:
+            fig = plt.figure()
+            ax = fig.add_axes([0, 0, 1, 1])
+            ctx = RenderContext(doc)
+            out = MatplotlibBackend(ax)
+            
+            Frontend(ctx, out, config=config).draw_layout(doc.modelspace(), finalize=True)
+            
+            ax.set_position([0, 0, 1, 1])
+            ax.set_axis_off()
+            
+            marcos = [ent for ent in doc.modelspace().query('INSERT') if ent.dxf.name.startswith('bloque_marco_')]
+            marcos.sort(key=lambda m: m.dxf.insert.x)
+            
+            if marcos:
+                for marco in marcos:
+                    nombre_m = marco.dxf.name.lower()
+                    if "_c" in nombre_m: w_m, h_m = 560.0, 432.0
+                    elif "_d" in nombre_m: w_m, h_m = 864.0, 560.0
+                    else: w_m, h_m = 1120.0, 864.0 
+                    
+                    margen = 5.0
+                    ancho_camara = w_m + (margen * 2)
+                    alto_camara = h_m + (margen * 2)
+                    
+                    ratio_hoja = ancho_camara / alto_camara
+                    alto_pulgadas = 9.0
+                    fig.set_size_inches(alto_pulgadas * ratio_hoja, alto_pulgadas)
+                    
+                    x_origen = marco.dxf.insert.x - margen
+                    y_origen = marco.dxf.insert.y - margen
+                    
+                    ax.set_xlim(x_origen, x_origen + ancho_camara)
+                    ax.set_ylim(y_origen, y_origen + alto_camara)
+                    # Mantenemos el DPI bajo para mayor velocidad
+                    pdf.savefig(fig, dpi=72, pad_inches=0.0)
+            else:
+                xmin, xmax = ax.get_xlim()
+                ymin, ymax = ax.get_ylim()
+                ax.set_xlim(xmin, xmax)
+                ax.set_ylim(ymin, ymax)
+                pdf.savefig(fig, dpi=72, pad_inches=0.0)
+                
+            fig.clf()
+            plt.close(fig)
+            
+        pdf_buffer.seek(0)
+        return pdf_buffer
+
+
+    def generar_imagen_desde_dxf(doc):
+        from ezdxf.addons.drawing import RenderContext, Frontend
+        from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
+        from ezdxf.addons.drawing.config import Configuration, BackgroundPolicy, ColorPolicy
+        import matplotlib.font_manager as fm
+        import matplotlib.pyplot as plt
+        import io
+        import re
+        import os
+        
+        plt.rcParams['path.simplify'] = True
+        plt.rcParams['path.simplify_threshold'] = 1.0
+        
+        directorio_actual = os.path.dirname(os.path.abspath(__file__))
+        ruta_absoluta_fuente = os.path.join(directorio_actual, "ARIALBD.TTF")
+        nombre_fuente = "sans-serif" 
+        
+        if os.path.exists(ruta_absoluta_fuente):
+            try:
+                fm.fontManager.addfont(ruta_absoluta_fuente)
+                prop = fm.FontProperties(fname=ruta_absoluta_fuente)
+                nombre_fuente = prop.get_name()
+                from ezdxf import fonts
+                fonts.font_manager.add_font(ruta_absoluta_fuente)
+            except Exception: pass
+                
+        for style in doc.styles:
+            style.dxf.font = nombre_fuente
+            if style.has_dxf_attrib("shx_file"): del style.dxf.shx_file
+                
+        if "EstiloLimpio" not in doc.styles:
+            doc.styles.new("EstiloLimpio", dxfattribs={"font": nombre_fuente})
+            
+        for layout in [doc.modelspace()] + list(doc.blocks):
+            for entity in layout.query('TEXT MTEXT ATTRIB ATTDEF'):
+                entity.dxf.style = "EstiloLimpio"
+                if entity.dxftype() == 'MTEXT' and hasattr(entity, 'text') and entity.text:
+                    entity.text = re.sub(r'\\F[^;]+;', '', entity.text)
+        
+        config = Configuration(
+            background_policy=BackgroundPolicy.CUSTOM, custom_bg_color="#FFFFFF",
+            color_policy=ColorPolicy.BLACK, min_lineweight=0.3, lineweight_scaling=1.0    
+        )
+        
+        fig = plt.figure()
+        ax = fig.add_axes([0, 0, 1, 1])
+        ctx = RenderContext(doc)
+        out = MatplotlibBackend(ax)
+        
+        Frontend(ctx, out, config=config).draw_layout(doc.modelspace(), finalize=True)
+        ax.set_position([0, 0, 1, 1])
+        ax.set_axis_off()
+        
+        marcos = [ent for ent in doc.modelspace().query('INSERT') if ent.dxf.name.startswith('bloque_marco_')]
+        marcos.sort(key=lambda m: m.dxf.insert.x)
+        
+        imagenes = []
+        if marcos:
+            for marco in marcos:
+                nombre_m = marco.dxf.name.lower()
+                if "_c" in nombre_m: w_m, h_m = 560.0, 432.0
+                elif "_d" in nombre_m: w_m, h_m = 864.0, 560.0
+                else: w_m, h_m = 1120.0, 864.0 
+                
+                margen = 5.0
+                ancho_camara = w_m + (margen * 2)
+                alto_camara = h_m + (margen * 2)
+                ratio_hoja = ancho_camara / alto_camara
+                alto_pulgadas = 9.0
+                fig.set_size_inches(alto_pulgadas * ratio_hoja, alto_pulgadas)
+                
+                x_origen = marco.dxf.insert.x - margen
+                y_origen = marco.dxf.insert.y - margen
+                ax.set_xlim(x_origen, x_origen + ancho_camara)
+                ax.set_ylim(y_origen, y_origen + alto_camara)
+                
+                img_buffer = io.BytesIO()
+                fig.savefig(img_buffer, format='png', dpi=110, pad_inches=0.0)
+                img_buffer.seek(0)
+                imagenes.append(img_buffer)
+        else:
+            xmin, xmax = ax.get_xlim()
+            ymin, ymax = ax.get_ylim()
+            ax.set_xlim(xmin, xmax)
+            ax.set_ylim(ymin, ymax)
+            img_buffer = io.BytesIO()
+            fig.savefig(img_buffer, format='png', dpi=110, pad_inches=0.0)
+            img_buffer.seek(0)
+            imagenes.append(img_buffer)
+            
+        fig.clf()
+        plt.close(fig)
+        return imagenes
+
+
     def registrar_bloque(doc, archivo_dxf, nombre_bloque):
         ruta = os.path.join(CARPETA_BLOQUES, archivo_dxf)
         if nombre_bloque in doc.blocks: return True
@@ -1392,8 +1590,20 @@ with st.container():
 
             # Imprimir voltajes SOLO si NO es la Hoja 2
             if "HOJA 2" not in titulo_vista:
-                msp.add_text(f"VOLTAJE ENTRADA: {var_volt_entrada} VCA", dxfattribs={'height': h_tit_der, 'color': 7}).set_placement((x_tit_der, y_titulos), align=TextEntityAlignment.TOP_RIGHT)
-                msp.add_text(f"VOLTAJE SALIDA: {var_volt_salida} VCA", dxfattribs={'height': h_tit_der, 'color': 7}).set_placement((x_tit_der, y_titulos - inter_der), align=TextEntityAlignment.TOP_RIGHT)
+                def formato_vca(v):
+                    return v.replace("V", " VCA") if v.endswith("V") else f"{v} VCA"
+
+                # Si lleva transformadores (Módulos de potencia), mostramos todos los TAPS
+                if var_mod1 != "Ninguno" or var_mod2 != "Ninguno":
+                    txt_v_ent = TAPS_VOLTAJE.get(var_volt_entrada, f"{var_volt_entrada}V").replace("V", " VCA")
+                    txt_v_sal = TAPS_VOLTAJE.get(var_volt_salida, f"{var_volt_salida}V").replace("V", " VCA")
+                # Si no lleva, mostramos únicamente el voltaje seleccionado
+                else:
+                    txt_v_ent = formato_vca(var_volt_entrada)
+                    txt_v_sal = formato_vca(var_volt_salida)
+                
+                msp.add_text(f"VOLTAJE ENTRADA: {txt_v_ent}", dxfattribs={'height': h_tit_der, 'color': 7}).set_placement((x_tit_der, y_titulos), align=TextEntityAlignment.TOP_RIGHT)
+                msp.add_text(f"VOLTAJE SALIDA: {txt_v_sal}", dxfattribs={'height': h_tit_der, 'color': 7}).set_placement((x_tit_der, y_titulos - inter_der), align=TextEntityAlignment.TOP_RIGHT)
                 msp.add_text(txt_bus, dxfattribs={'height': h_tit_der, 'color': 7}).set_placement((x_tit_der, y_titulos - 2*inter_der), align=TextEntityAlignment.TOP_RIGHT)
 
             fecha_hoy = datetime.datetime.now().strftime("%m/%y")
@@ -1806,7 +2016,7 @@ with st.container():
         memoria_dxf = io.StringIO()
         doc.write(memoria_dxf)
         datos_descarga = memoria_dxf.getvalue()
-        return datos_descarga, nombre_diagrama_completo.replace("/", "-").replace(":", "") + ".dxf"
+        return doc, datos_descarga, nombre_diagrama_completo.replace("/", "-").replace(":", "") + ".dxf"
 
     # --- CONTROL DE ACCIÓN Y ESTILOS DE BOTONES ---
     st.markdown("""
@@ -1843,81 +2053,135 @@ with st.container():
     </style>
     """, unsafe_allow_html=True)
 
-    # Creamos 3 columnas
-    col_btn, col_msg, col_dl = st.columns(3)
+    # ==========================================================
+    # 👁️ SECCIÓN DE VISTA PREVIA Y DESCARGAS
+    # ==========================================================
+    st.markdown("---")
+    col_tit_prev, col_btn_prev = st.columns([2, 1])
+    with col_tit_prev:
+        st.markdown("<h3 style='margin: 0; padding: 0; line-height: 38px;'>Vista Previa del Plano</h3>", unsafe_allow_html=True)
+    with col_btn_prev:
+        btn_preview = st.button("🔄 ACTUALIZAR VISTA PREVIA", type="secondary", use_container_width=True)
 
-    with col_btn:
-        btn_generar = st.button("🛠️ GENERAR PLANO CAD (DXF)", use_container_width=True)
+    # Estado de sesión para conservar las imágenes al hacer clics
+    if "preview_imgs" not in st.session_state:
+        st.session_state.preview_imgs = []
 
-    if btn_generar:
-        try:
-            # Reemplazar temporalmente los pesos en la base de datos con los editados antes de generar
-            if var_mod1 != "Ninguno" and var_mod2 != "Ninguno":
-                BASE_DATOS_MODULOS[var_mod1]["peso"] = pesos_editados.get("MOD_ENT", BASE_DATOS_MODULOS[var_mod1].get("peso", ""))
-                BASE_DATOS_MODULOS[var_mod2]["peso"] = pesos_editados.get("MOD_SAL", BASE_DATOS_MODULOS[var_mod2].get("peso", ""))
-            else:
-                if var_mod1 != "Ninguno": BASE_DATOS_MODULOS[var_mod1]["peso"] = pesos_editados.get("MOD_POT1", BASE_DATOS_MODULOS[var_mod1].get("peso", ""))
-                if var_mod2 != "Ninguno": BASE_DATOS_MODULOS[var_mod2]["peso"] = pesos_editados.get("MOD_POT2", BASE_DATOS_MODULOS[var_mod2].get("peso", ""))
-            
-            # --- LÓGICA DE PESO INTELIGENTE PARA MR1 Y COMPACTOS ---
-            es_mr1 = "MR1" in var_ups
-            modelo_base = var_ups.split()[0]
-            es_compacto = modelo_base in ["1310", "1315", "1320", "1330", "1340"] and not es_mr1
-            kva_ups_num = int(kva_ups)
+    # Función interna para inyectar pesos justo antes de generar
+    def aplicar_pesos_y_crear_dxf():
+        if var_mod1 != "Ninguno" and var_mod2 != "Ninguno":
+            BASE_DATOS_MODULOS[var_mod1]["peso"] = pesos_editados.get("MOD_ENT", BASE_DATOS_MODULOS[var_mod1].get("peso", ""))
+            BASE_DATOS_MODULOS[var_mod2]["peso"] = pesos_editados.get("MOD_SAL", BASE_DATOS_MODULOS[var_mod2].get("peso", ""))
+        else:
+            if var_mod1 != "Ninguno": BASE_DATOS_MODULOS[var_mod1]["peso"] = pesos_editados.get("MOD_POT1", BASE_DATOS_MODULOS[var_mod1].get("peso", ""))
+            if var_mod2 != "Ninguno": BASE_DATOS_MODULOS[var_mod2]["peso"] = pesos_editados.get("MOD_POT2", BASE_DATOS_MODULOS[var_mod2].get("peso", ""))
         
-            if es_mr1:
-                if var_tipo_bat == "Interno" and kva_ups_num <= 80:
-                    clave_pesos_mr1 = (var_ups, minutos_str)
-                    peso_original = PESOS_MR1_INTERNO.get(clave_pesos_mr1, 273 + ((kva_ups_num // 20) * 33))
-                else:
-                    peso_original = 273 + ((kva_ups_num // 20) * 33)
-                BASE_DATOS_UPS[var_ups]["peso"] = peso_original
-                
-            elif es_compacto and var_tipo_bat == "Interno":
-                clave_pesos_comp = (modelo_base, minutos_str)
-                if clave_pesos_comp in PESOS_COMPACTOS_INTERNO:
-                    BASE_DATOS_UPS[var_ups]["peso"] = PESOS_COMPACTOS_INTERNO[clave_pesos_comp]
-
-            # Mantenemos tu línea original para que respete tu tabla de pesos editables
-            BASE_DATOS_UPS[var_ups]["peso"] = pesos_editados.get("UPS", BASE_DATOS_UPS[var_ups].get("peso", ""))
+        es_mr1 = "MR1" in var_ups
+        modelo_base = var_ups.split()[0]
+        es_compacto = modelo_base in ["1310", "1315", "1320", "1330", "1340"] and not es_mr1
+        kva_ups_num = int(kva_ups)
+    
+        if es_mr1:
+            if var_tipo_bat == "Interno" and kva_ups_num <= 80:
+                clave_pesos_mr1 = (var_ups, minutos_str)
+                peso_original = PESOS_MR1_INTERNO.get(clave_pesos_mr1, 273 + ((kva_ups_num // 20) * 33))
+            else:
+                peso_original = 273 + ((kva_ups_num // 20) * 33)
+            BASE_DATOS_UPS[var_ups]["peso"] = peso_original
             
-            if var_tipo_bat == "Plomo" and sap_final_bat != "Ninguno" and cant_final_bat > 0:
-                BASE_DATOS_PLOMO[sap_final_bat]["peso"] = pesos_editados.get("BAT_PLOMO", "").replace(" c/u", "")
-            elif var_tipo_bat == "Litio" and cant_final_bat > 0:
-                GABINETE_LITIO["peso"] = pesos_editados.get("BAT_LITIO", "").replace(" c/u", "")
-                if pesos_editados.get("GAB_DIST"): GABINETE_DIST_LITIO["peso"] = pesos_editados.get("GAB_DIST")
+        elif es_compacto and var_tipo_bat == "Interno":
+            clave_pesos_comp = (modelo_base, minutos_str)
+            if clave_pesos_comp in PESOS_COMPACTOS_INTERNO:
+                BASE_DATOS_UPS[var_ups]["peso"] = PESOS_COMPACTOS_INTERNO[clave_pesos_comp]
 
-            if var_es_paralelo == "Paralelo":
-                if var_lleva_gabconx == "Sí": BASE_DATOS_GABCONX[var_gabconx]["peso"] = pesos_editados.get("GAB_CONX", BASE_DATOS_GABCONX[var_gabconx].get("peso", ""))
-                BASE_DATOS_GABPAR[var_gabpar]["peso"] = pesos_editados.get("GAB_PAR", BASE_DATOS_GABPAR[var_gabpar].get("peso", ""))
+        BASE_DATOS_UPS[var_ups]["peso"] = pesos_editados.get("UPS", BASE_DATOS_UPS[var_ups].get("peso", ""))
+        
+        if var_tipo_bat == "Plomo" and sap_final_bat != "Ninguno" and cant_final_bat > 0:
+            BASE_DATOS_PLOMO[sap_final_bat]["peso"] = pesos_editados.get("BAT_PLOMO", "").replace(" c/u", "")
+        elif var_tipo_bat == "Litio" and cant_final_bat > 0:
+            GABINETE_LITIO["peso"] = pesos_editados.get("BAT_LITIO", "").replace(" c/u", "")
+            if pesos_editados.get("GAB_DIST"): GABINETE_DIST_LITIO["peso"] = pesos_editados.get("GAB_DIST")
 
-            dxf_data, file_name = crear_dxf()
+        if var_es_paralelo == "Paralelo":
+            if var_lleva_gabconx == "Sí": BASE_DATOS_GABCONX[var_gabconx]["peso"] = pesos_editados.get("GAB_CONX", BASE_DATOS_GABCONX[var_gabconx].get("peso", ""))
+            BASE_DATOS_GABPAR[var_gabpar]["peso"] = pesos_editados.get("GAB_PAR", BASE_DATOS_GABPAR[var_gabpar].get("peso", ""))
+            
+        return crear_dxf()
+
+    # --- ACCIÓN DE VISTA PREVIA ---
+    if btn_preview:
+        with st.spinner("Renderizando vista previa de la Hoja Membretada..."):
+            try:
+                doc_prev, _, _ = aplicar_pesos_y_crear_dxf()
+                st.session_state.preview_imgs = generar_imagen_desde_dxf(doc_prev)
+            except Exception as e:
+                st.error(f"Error al generar vista previa: {e}")
+
+    # --- MOSTRAR IMÁGENES ---
+    if st.session_state.preview_imgs:
+        st.markdown("<br>", unsafe_allow_html=True)
+        num_imgs = len(st.session_state.preview_imgs)
+        
+        if num_imgs == 1:
+            _, col_img, _ = st.columns([1, 4, 1])
+            with col_img: 
+                st.image(st.session_state.preview_imgs[0], use_container_width=True)
+        else:
+            c1, c2 = st.columns(2)
+            with c1: 
+                st.markdown("<div style='text-align:center; color:#a0aab2; margin-bottom: 5px;'><b>--- HOJA 1 (VISTA FRONTAL) ---</b></div>", unsafe_allow_html=True)
+                st.image(st.session_state.preview_imgs[0], use_container_width=True)
+            with c2: 
+                st.markdown("<div style='text-align:center; color:#a0aab2; margin-bottom: 5px;'><b>--- HOJA 2 (DIMENSIONAMIENTO) ---</b></div>", unsafe_allow_html=True)
+                st.image(st.session_state.preview_imgs[1], use_container_width=True)
+
+    st.markdown("<hr style='margin-top: 30px; margin-bottom: 30px;'>", unsafe_allow_html=True)
+
+    # --- BOTONES DE DESCARGA ---
+    col_btn1, col_btn2, col_btn3 = st.columns(3)
+    with col_btn1: btn_gen_dxf = st.button("📐 GENERAR SOLO DXF", use_container_width=True)
+    with col_btn2: btn_gen_pdf = st.button("📄 GENERAR SOLO PDF", use_container_width=True)
+    with col_btn3: btn_gen_zip = st.button("📦 GENERAR AMBOS (ZIP)", use_container_width=True)
+    
+    col_msg, col_dl = st.columns(2)
+
+    if btn_gen_dxf or btn_gen_pdf or btn_gen_zip:
+        try:
+            doc_dxf, dxf_data, file_name = aplicar_pesos_y_crear_dxf()
+            nombre_pdf = file_name.replace(".dxf", ".pdf")
+            
+            pdf_buffer = None
+            error_pdf = ""
+            
+            if btn_gen_pdf or btn_gen_zip:
+                try:
+                    with st.spinner("Renderizando documento vectorial final (PDF)..."):
+                        pdf_buffer = generar_pdf_desde_dxf(doc_dxf)
+                except Exception as e:
+                    error_pdf = str(e)
             
             with col_msg:
-                # Mensaje renderizado como HTML flexible para alinear perfecto con botones de 46px
-                st.markdown(
-                    '<div style="display: flex; align-items: center; justify-content: center; height: 46px; background-color: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; color: #34d399; font-weight: bold; font-size: 1.05rem;">'
-                    '✓ ¡Plano generado!'
-                    '</div>', 
-                    unsafe_allow_html=True
-                )
+                if error_pdf:
+                    st.markdown(f'<div style="display: flex; align-items: center; justify-content: center; height: 46px; background-color: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 8px; color: #f87171; font-weight: bold; font-size: 0.9rem;">❌ PDF Falló: {error_pdf}</div>', unsafe_allow_html=True)
+                else:
+                    st.markdown('<div style="display: flex; align-items: center; justify-content: center; height: 46px; background-color: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; color: #34d399; font-weight: bold; font-size: 1.05rem;">✓ ¡Proceso Completado!</div>', unsafe_allow_html=True)
                 
             with col_dl:
-                st.download_button(
-                    label="📥 DESCARGAR PLANO", 
-                    data=dxf_data, 
-                    file_name=file_name, 
-                    mime="application/dxf", 
-                    use_container_width=True
-                )
+                if btn_gen_dxf:
+                    st.download_button(label="📐 DESCARGAR DXF", data=dxf_data, file_name=file_name, mime="application/dxf", use_container_width=True, key="dl_dxf_final")
+                elif btn_gen_pdf and not error_pdf:
+                    st.download_button(label="📄 DESCARGAR PDF", data=pdf_buffer, file_name=nombre_pdf, mime="application/pdf", use_container_width=True, key="dl_pdf_final")
+                elif btn_gen_zip and not error_pdf:
+                    import zipfile
+                    zip_buffer = io.BytesIO()
+                    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+                        zip_file.writestr(file_name, dxf_data)
+                        zip_file.writestr(nombre_pdf, pdf_buffer.getvalue())
+                    zip_buffer.seek(0)
+                    st.download_button(label="📦 DESCARGAR AMBOS (ZIP)", data=zip_buffer, file_name=file_name.replace(".dxf", ".zip"), mime="application/zip", use_container_width=True, key="dl_zip_final")
+
         except Exception as e:
             import traceback
             with col_msg:
-                st.markdown(
-                    f'<div style="display: flex; align-items: center; justify-content: center; height: 46px; background-color: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 8px; color: #f87171; font-weight: bold; font-size: 0.9rem;">'
-                    f'❌ Error al generar'
-                    f'</div>', 
-                    unsafe_allow_html=True
-                )
-            st.error(f"**Detalle técnico del error:** {str(e)}")
-            st.code(traceback.format_exc(), language="python")
+                st.markdown(f'<div style="display: flex; align-items: center; justify-content: center; height: 46px; background-color: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 8px; color: #f87171; font-weight: bold; font-size: 0.9rem;">❌ Error General</div>', unsafe_allow_html=True)
+            st.error(f"**Detalle técnico:** {str(e)}")
