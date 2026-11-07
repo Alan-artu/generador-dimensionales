@@ -1083,8 +1083,24 @@ with st.container():
         plt.rcParams['path.simplify'] = True
         plt.rcParams['path.simplify_threshold'] = 1.0
         
-        # --- LÓGICA DE FUENTES RESTAURADA (ARIAL BOLD) ---
+        # --- LÓGICA DE FUENTES A PRUEBA DE NUBE (LINUX) ---
         directorio_actual = os.path.dirname(os.path.abspath(__file__))
+        nombre_fuente = "DejaVu Sans" # Respaldo nativo de Linux
+        
+        try:
+            for archivo in os.listdir(directorio_actual):
+                if archivo.lower() == "arialbd.ttf" or archivo.lower() == "arial.ttf":
+                    ruta_absoluta_fuente = os.path.join(directorio_actual, archivo)
+                    fm.fontManager.addfont(ruta_absoluta_fuente)
+                    prop = fm.FontProperties(fname=ruta_absoluta_fuente)
+                    nombre_fuente = prop.get_name()
+                    from ezdxf import fonts
+                    fonts.font_manager.add_font(ruta_absoluta_fuente)
+                    break
+        except Exception: pass
+                
+        for style in doc.styles:
+            style.dxf.font = nombre_fuentedirectorio_actual = os.path.dirname(os.path.abspath(__file__))
         ruta_absoluta_fuente = os.path.join(directorio_actual, "ARIALBD.TTF")
         nombre_fuente = "sans-serif" 
         
@@ -1096,9 +1112,6 @@ with st.container():
                 from ezdxf import fonts
                 fonts.font_manager.add_font(ruta_absoluta_fuente)
             except Exception: pass
-                
-        for style in doc.styles:
-            style.dxf.font = nombre_fuente
             if style.has_dxf_attrib("shx_file"):
                 del style.dxf.shx_file
                 
@@ -1181,18 +1194,21 @@ with st.container():
         plt.rcParams['path.simplify'] = True
         plt.rcParams['path.simplify_threshold'] = 1.0
         
+        # --- LÓGICA DE FUENTES A PRUEBA DE NUBE (LINUX) ---
         directorio_actual = os.path.dirname(os.path.abspath(__file__))
-        ruta_absoluta_fuente = os.path.join(directorio_actual, "ARIALBD.TTF")
-        nombre_fuente = "sans-serif" 
+        nombre_fuente = "DejaVu Sans" # Respaldo nativo de Linux
         
-        if os.path.exists(ruta_absoluta_fuente):
-            try:
-                fm.fontManager.addfont(ruta_absoluta_fuente)
-                prop = fm.FontProperties(fname=ruta_absoluta_fuente)
-                nombre_fuente = prop.get_name()
-                from ezdxf import fonts
-                fonts.font_manager.add_font(ruta_absoluta_fuente)
-            except Exception: pass
+        try:
+            for archivo in os.listdir(directorio_actual):
+                if archivo.lower() == "arialbd.ttf" or archivo.lower() == "arial.ttf":
+                    ruta_absoluta_fuente = os.path.join(directorio_actual, archivo)
+                    fm.fontManager.addfont(ruta_absoluta_fuente)
+                    prop = fm.FontProperties(fname=ruta_absoluta_fuente)
+                    nombre_fuente = prop.get_name()
+                    from ezdxf import fonts
+                    fonts.font_manager.add_font(ruta_absoluta_fuente)
+                    break
+        except Exception: pass
                 
         for style in doc.styles:
             style.dxf.font = nombre_fuente
