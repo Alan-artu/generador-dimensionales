@@ -5,11 +5,11 @@ HEADER
   9
 $ACADVER
   1
-AC1027
+AC1032
   9
 $ACADMAINTVER
- 70
-   125
+ 90
+      329
   9
 $DWGCODEPAGE
   3
@@ -501,19 +501,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461348.841655093
+2461349.805231482
   9
 $TDUUPDATE
  40
-2461349.091655093
+2461350.055231481
   9
 $TDINDWG
  40
-0.1059721065
+1.0695484954
   9
 $TDUSRTIMER
  40
-2461236.938676957
+2461237.902253345
   9
 $USRTIMER
  70
@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-15651
+15654
   9
 $SURFTAB1
  70
@@ -937,7 +937,7 @@ $FINGERPRINTGUID
   9
 $VERSIONGUID
   2
-{C8CAEC07-F3A1-494A-B6C1-ADF3E0B2364B}
+{3A589888-C8BC-C74E-9510-F40061723889}
   9
 $EXTNAMES
 290
@@ -1215,7 +1215,7 @@ ObjectDBX Classes
  90
      1152
  91
-        2
+        3
 280
      0
 281
@@ -1471,9 +1471,9 @@ AcDbViewportTableRecord
  37
 0.0
  40
-298.1806860048504
+298.5598979919979
  41
-1.794990723562151
+1.794990723562152
  42
 50.0
  43
@@ -7057,15 +7057,11 @@ ACAD_VISUALSTYLE
   3
 ACDB_RECOMPOSE_DATA
 350
-15643
+15653
   3
 AcDbVariableDictionary
 350
 3D
-  3
-AcDsDecomposeData
-350
-1564A
   3
 APPDATA
 350
@@ -7114,12 +7110,6 @@ AcDbSun
    256
 280
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 DICTIONARY
   5
@@ -7184,12 +7174,6 @@ AcDbSun
    256
 280
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 SUN
   5
@@ -7222,12 +7206,6 @@ AcDbSun
    256
 280
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 XRECORD
   5
@@ -7341,11 +7319,11 @@ AcDbXrecord
 280
      1
 300
-{C8CAEC07-F3A1-494A-B6C1-ADF3E0B2364B}
+{3A589888-C8BC-C74E-9510-F40061723889}
 301
 {47962C33-AD19-274D-80A4-98798BEBFA3C}
 302
-{C8CAEC07-F3A1-494A-B6C1-ADF3E0B2364B}
+{3A589888-C8BC-C74E-9510-F40061723889}
 303
 C:\Users\procesos6\Desktop\Maker dimensionales\bloques\ups_mr1_base_top.dxf
   0
@@ -7791,7 +7769,7 @@ X-Ray
   0
 XRECORD
   5
-15643
+15653
 102
 {ACAD_REACTORS
 330
@@ -7852,34 +7830,6 @@ LIGHTSINBLOCKS
 XCLIPFRAME
 350
 70
-  0
-DICTIONARY
-  5
-1564A
-102
-{ACAD_REACTORS
-330
-C
-102
-}
-330
-C
-100
-AcDbDictionary
-281
-     1
-  3
-AcDsRecords
-350
-1564C
-  3
-AcDsSchemas
-350
-1564B
-1001
-ACAD
-1070
-     2
   0
 DICTIONARY
   5
@@ -8015,12 +7965,6 @@ ACDBDETAILVIEWSTYLE
   5
 1556C
 102
-{ACAD_XDICTIONARY
-360
-1564F
-102
-}
-102
 {ACAD_REACTORS
 330
 B5
@@ -8036,6 +7980,10 @@ AcDbModelDocViewStyle
 Metric50
 290
      0
+300
+Metric50
+ 90
+        0
 100
 AcDbDetailViewStyle
  70
@@ -9643,12 +9591,6 @@ ACDBSECTIONVIEWSTYLE
   5
 1556B
 102
-{ACAD_XDICTIONARY
-360
-1564D
-102
-}
-102
 {ACAD_REACTORS
 330
 B6
@@ -9664,6 +9606,10 @@ AcDbModelDocViewStyle
 Metric50
 290
      0
+300
+Metric50
+ 90
+        0
 100
 AcDbSectionViewStyle
  70
@@ -9771,7 +9717,7 @@ TABLESTYLE
 102
 {ACAD_XDICTIONARY
 360
-15641
+15651
 102
 }
 102
@@ -10224,12 +10170,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -10492,12 +10432,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -10760,12 +10694,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -11030,12 +10958,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -11298,12 +11220,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -11566,12 +11482,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -11833,12 +11743,6 @@ strokes_ogs.tif
  40
 1.0
 176
-     0
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
      0
   0
 VISUALSTYLE
@@ -12102,12 +12006,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -12370,12 +12268,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -12638,12 +12530,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -12906,12 +12792,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -13174,12 +13054,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -13442,12 +13316,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -13709,12 +13577,6 @@ strokes_ogs.tif
  40
 1.0
 176
-     0
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
      0
   0
 VISUALSTYLE
@@ -13978,12 +13840,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -14245,12 +14101,6 @@ strokes_ogs.tif
  40
 1.0
 176
-     0
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
      0
   0
 VISUALSTYLE
@@ -14514,12 +14364,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -14784,12 +14628,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -15052,12 +14890,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -15320,12 +15152,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -15588,12 +15414,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -15856,12 +15676,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -16124,12 +15938,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 VISUALSTYLE
   5
@@ -16392,12 +16200,6 @@ strokes_ogs.tif
 1.0
 176
      1
-1001
-ACAD
-1000
-AcDbSavedByObjectVersion
-1070
-     0
   0
 DICTIONARYVAR
   5
@@ -16524,62 +16326,6 @@ DictionaryVariables
      0
   1
 0
-  0
-DICTIONARY
-  5
-1564C
-102
-{ACAD_REACTORS
-330
-1564A
-102
-}
-330
-1564A
-100
-AcDbDictionary
-281
-     1
-  0
-DICTIONARY
-  5
-1564B
-102
-{ACAD_REACTORS
-330
-1564A
-102
-}
-330
-1564A
-100
-AcDbDictionary
-281
-     1
-  3
-2220655342016
-350
-15644
-  3
-2220655342032
-350
-15645
-  3
-2220655342048
-350
-15646
-  3
-2220655342064
-350
-15647
-  3
-2220655342080
-350
-15648
-  3
-2220655342096
-350
-15649
   0
 XRECORD
   5
@@ -16835,39 +16581,7 @@ AcDbXrecord
   0
 DICTIONARY
   5
-1564F
-330
-1556C
-100
-AcDbDictionary
-280
-     1
-281
-     1
-  3
-ACAD_XREC_ROUNDTRIP
-360
-15650
-  0
-DICTIONARY
-  5
-1564D
-330
-1556B
-100
-AcDbDictionary
-280
-     1
-281
-     1
-  3
-ACAD_XREC_ROUNDTRIP
-360
-1564E
-  0
-DICTIONARY
-  5
-15641
+15651
 330
 3C
 100
@@ -16879,321 +16593,19 @@ AcDbDictionary
   3
 ACAD_ROUNDTRIP_2008_TABLESTYLE_CELLSTYLEMAP
 360
-15642
-  0
-XRECORD
-  5
-15644
-102
-{ACAD_REACTORS
-330
-1564B
-102
-}
-330
-1564B
-100
-AcDbXrecord
-280
-     1
-  1
-AcDb_Thumbnail_Schema
-102
-{ATTRRECORD
-341
-15646
-  2
-AcDbDs::TreatedAsObjectData
-280
-     1
-291
-     1
-102
-ATTRRECORD}
-102
-{ATTRRECORD
-341
-15647
-  2
-AcDbDs::Legacy
-280
-     1
-291
-     1
-102
-ATTRRECORD}
-  2
-AcDbDs::ID
-280
-    10
- 91
-        8
-102
-{ATTRRECORD
-341
-15648
-  2
-AcDs:Indexable
-280
-     1
-291
-     1
-102
-ATTRRECORD}
-102
-{ATTRRECORD
-341
-15649
-  2
-AcDbDs::HandleAttribute
-280
-     7
-282
-     1
-102
-ATTRRECORD}
-  2
-Thumbnail_Data
-280
-    15
- 91
-        0
-  0
-XRECORD
-  5
-15645
-102
-{ACAD_REACTORS
-330
-1564B
-102
-}
-330
-1564B
-100
-AcDbXrecord
-280
-     1
-  1
-AcDb3DSolid_ASM_Data
-102
-{ATTRRECORD
-341
-15646
-  2
-AcDbDs::TreatedAsObjectData
-280
-     1
-291
-     1
-102
-ATTRRECORD}
-102
-{ATTRRECORD
-341
-15647
-  2
-AcDbDs::Legacy
-280
-     1
-291
-     1
-102
-ATTRRECORD}
-  2
-AcDbDs::ID
-280
-    10
- 91
-        8
-102
-{ATTRRECORD
-341
-15648
-  2
-AcDs:Indexable
-280
-     1
-291
-     1
-102
-ATTRRECORD}
-102
-{ATTRRECORD
-341
-15649
-  2
-AcDbDs::HandleAttribute
-280
-     7
-282
-     1
-102
-ATTRRECORD}
-  2
-ASM_Data
-280
-    15
- 91
-        0
-  0
-XRECORD
-  5
-15646
-102
-{ACAD_REACTORS
-330
-1564B
-102
-}
-330
-1564B
-100
-AcDbXrecord
-280
-     1
-  1
-AcDbDs::TreatedAsObjectDataSchema
-  2
-AcDbDs::TreatedAsObjectData
-280
-     1
- 91
-        0
-  0
-XRECORD
-  5
-15647
-102
-{ACAD_REACTORS
-330
-1564B
-102
-}
-330
-1564B
-100
-AcDbXrecord
-280
-     1
-  1
-AcDbDs::LegacySchema
-  2
-AcDbDs::Legacy
-280
-     1
- 91
-        0
-  0
-XRECORD
-  5
-15648
-102
-{ACAD_REACTORS
-330
-1564B
-102
-}
-330
-1564B
-100
-AcDbXrecord
-280
-     1
-  1
-AcDbDs::IndexedPropertySchema
-  2
-AcDs:Indexable
-280
-     1
- 91
-        0
-  0
-XRECORD
-  5
-15649
-102
-{ACAD_REACTORS
-330
-1564B
-102
-}
-330
-1564B
-100
-AcDbXrecord
-280
-     1
-  1
-AcDbDs::HandleAttributeSchema
-  2
-AcDbDs::HandleAttribute
-280
-     7
- 91
-        1
-284
-     1
-  0
-XRECORD
-  5
-15650
-102
-{ACAD_REACTORS
-330
-1564F
-102
-}
-330
-1564F
-100
-AcDbXrecord
-280
-     1
-102
-DISPLAYNAME
-  1
-Metric50
-102
-FLAGS
- 90
-        0
-  0
-XRECORD
-  5
-1564E
-102
-{ACAD_REACTORS
-330
-1564D
-102
-}
-330
-1564D
-100
-AcDbXrecord
-280
-     1
-102
-DISPLAYNAME
-  1
-Metric50
-102
-FLAGS
- 90
-        0
+15652
   0
 CELLSTYLEMAP
   5
-15642
+15652
 102
 {ACAD_REACTORS
 330
-15641
+15651
 102
 }
 330
-15641
+15651
 100
 AcDbCellStyleMap
  90
