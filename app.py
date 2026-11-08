@@ -1069,6 +1069,10 @@ with st.container():
     # 4. FUNCIÓN MAESTRA DE INCRUSTACIÓN VECTORIAL Y PDF
     # ==========================================================
     def generar_pdf_desde_dxf(doc):
+        import shutil
+        import matplotlib as mpl
+        shutil.rmtree(mpl.get_cachedir(), ignore_errors=True) # <-- DESTRUYE LA CACHÉ
+        
         from matplotlib.backends.backend_pdf import PdfPages
         from ezdxf.addons.drawing import RenderContext, Frontend
         from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
@@ -1079,40 +1083,26 @@ with st.container():
         import re
         import os
         
-        # --- OPTIMIZACIÓN CONSERVADA: Ignora vértices inútiles ---
         plt.rcParams['path.simplify'] = True
         plt.rcParams['path.simplify_threshold'] = 1.0
         
-        # --- LÓGICA DE FUENTES (MÁXIMA COMPATIBILIDAD NUBE) ---
-        nombre_fuente = "sans-serif" # Fallback nativo universal de Matplotlib
-        
-        # Buscamos el archivo en la raíz del repositorio de GitHub
-        ruta_fuente = os.path.join(os.getcwd(), "ARIALBD.TTF")
-        if not os.path.exists(ruta_fuente):
-            ruta_fuente = os.path.join(os.getcwd(), "arialbd.ttf") # Intento alternativo
-            
-        if os.path.exists(ruta_fuente):
-            try:
-                fm.fontManager.addfont(ruta_fuente)
-                prop = fm.FontProperties(fname=ruta_fuente)
-                nombre_fuente = prop.get_name()
-                from ezdxf import fonts
-                fonts.font_manager.add_font(ruta_fuente)
-            except Exception: pass
+        # --- LÓGICA DE FUENTES (MÁXIMA COMPATIBILIDAD EN LA NUBE) ---
+        nombre_fuente = "sans-serif" 
+        try:
+            ruta_raiz = os.getcwd() # Busca directo en la raíz de GitHub para Streamlit Cloud
+            for archivo in os.listdir(ruta_raiz):
+                if archivo.lower() in ["arialbd.ttf", "arial.ttf"]:
+                    ruta_fuente = os.path.join(ruta_raiz, archivo)
+                    fm.fontManager.addfont(ruta_fuente)
+                    prop = fm.FontProperties(fname=ruta_fuente)
+                    nombre_fuente = prop.get_name()
+                    from ezdxf import fonts
+                    fonts.font_manager.add_font(ruta_fuente)
+                    break
+        except Exception: pass
                 
         for style in doc.styles:
-            style.dxf.font = nombre_fuentedirectorio_actual = os.path.dirname(os.path.abspath(__file__))
-        ruta_absoluta_fuente = os.path.join(directorio_actual, "ARIALBD.TTF")
-        nombre_fuente = "sans-serif" 
-        
-        if os.path.exists(ruta_absoluta_fuente):
-            try:
-                fm.fontManager.addfont(ruta_absoluta_fuente)
-                prop = fm.FontProperties(fname=ruta_absoluta_fuente)
-                nombre_fuente = prop.get_name()
-                from ezdxf import fonts
-                fonts.font_manager.add_font(ruta_absoluta_fuente)
-            except Exception: pass
+            style.dxf.font = nombre_fuente
             if style.has_dxf_attrib("shx_file"):
                 del style.dxf.shx_file
                 
@@ -1124,8 +1114,7 @@ with st.container():
                 entity.dxf.style = "EstiloLimpio"
                 if entity.dxftype() == 'MTEXT' and hasattr(entity, 'text') and entity.text:
                     entity.text = re.sub(r'\\F[^;]+;', '', entity.text)
-        # ------------------------------------------------
-        
+                    
         config = Configuration(
             background_policy=BackgroundPolicy.CUSTOM, custom_bg_color="#FFFFFF",
             color_policy=ColorPolicy.BLACK, min_lineweight=0.3, lineweight_scaling=1.0    
@@ -1139,7 +1128,6 @@ with st.container():
             out = MatplotlibBackend(ax)
             
             Frontend(ctx, out, config=config).draw_layout(doc.modelspace(), finalize=True)
-            
             ax.set_position([0, 0, 1, 1])
             ax.set_axis_off()
             
@@ -1166,7 +1154,6 @@ with st.container():
                     
                     ax.set_xlim(x_origen, x_origen + ancho_camara)
                     ax.set_ylim(y_origen, y_origen + alto_camara)
-                    # Mantenemos el DPI bajo para mayor velocidad
                     pdf.savefig(fig, dpi=72, pad_inches=0.0)
             else:
                 xmin, xmax = ax.get_xlim()
@@ -1183,6 +1170,10 @@ with st.container():
 
 
     def generar_imagen_desde_dxf(doc):
+        import shutil
+        import matplotlib as mpl
+        shutil.rmtree(mpl.get_cachedir(), ignore_errors=True) # <-- DESTRUYE LA CACHÉ
+        
         from ezdxf.addons.drawing import RenderContext, Frontend
         from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
         from ezdxf.addons.drawing.config import Configuration, BackgroundPolicy, ColorPolicy
@@ -1195,19 +1186,18 @@ with st.container():
         plt.rcParams['path.simplify'] = True
         plt.rcParams['path.simplify_threshold'] = 1.0
         
-        # --- LÓGICA DE FUENTES A PRUEBA DE NUBE (LINUX) ---
-        directorio_actual = os.path.dirname(os.path.abspath(__file__))
-        nombre_fuente = "DejaVu Sans" # Respaldo nativo de Linux
-        
+        # --- LÓGICA DE FUENTES (MÁXIMA COMPATIBILIDAD EN LA NUBE) ---
+        nombre_fuente = "sans-serif" 
         try:
-            for archivo in os.listdir(directorio_actual):
-                if archivo.lower() == "arialbd.ttf" or archivo.lower() == "arial.ttf":
-                    ruta_absoluta_fuente = os.path.join(directorio_actual, archivo)
-                    fm.fontManager.addfont(ruta_absoluta_fuente)
-                    prop = fm.FontProperties(fname=ruta_absoluta_fuente)
+            ruta_raiz = os.getcwd() # Busca directo en la raíz de GitHub para Streamlit Cloud
+            for archivo in os.listdir(ruta_raiz):
+                if archivo.lower() in ["arialbd.ttf", "arial.ttf"]:
+                    ruta_fuente = os.path.join(ruta_raiz, archivo)
+                    fm.fontManager.addfont(ruta_fuente)
+                    prop = fm.FontProperties(fname=ruta_fuente)
                     nombre_fuente = prop.get_name()
                     from ezdxf import fonts
-                    fonts.font_manager.add_font(ruta_absoluta_fuente)
+                    fonts.font_manager.add_font(ruta_fuente)
                     break
         except Exception: pass
                 
