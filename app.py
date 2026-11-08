@@ -1083,21 +1083,22 @@ with st.container():
         plt.rcParams['path.simplify'] = True
         plt.rcParams['path.simplify_threshold'] = 1.0
         
-        # --- LÓGICA DE FUENTES A PRUEBA DE NUBE (LINUX) ---
-        directorio_actual = os.path.dirname(os.path.abspath(__file__))
-        nombre_fuente = "DejaVu Sans" # Respaldo nativo de Linux
+        # --- LÓGICA DE FUENTES (MÁXIMA COMPATIBILIDAD NUBE) ---
+        nombre_fuente = "sans-serif" # Fallback nativo universal de Matplotlib
         
-        try:
-            for archivo in os.listdir(directorio_actual):
-                if archivo.lower() == "arialbd.ttf" or archivo.lower() == "arial.ttf":
-                    ruta_absoluta_fuente = os.path.join(directorio_actual, archivo)
-                    fm.fontManager.addfont(ruta_absoluta_fuente)
-                    prop = fm.FontProperties(fname=ruta_absoluta_fuente)
-                    nombre_fuente = prop.get_name()
-                    from ezdxf import fonts
-                    fonts.font_manager.add_font(ruta_absoluta_fuente)
-                    break
-        except Exception: pass
+        # Buscamos el archivo en la raíz del repositorio de GitHub
+        ruta_fuente = os.path.join(os.getcwd(), "ARIALBD.TTF")
+        if not os.path.exists(ruta_fuente):
+            ruta_fuente = os.path.join(os.getcwd(), "arialbd.ttf") # Intento alternativo
+            
+        if os.path.exists(ruta_fuente):
+            try:
+                fm.fontManager.addfont(ruta_fuente)
+                prop = fm.FontProperties(fname=ruta_fuente)
+                nombre_fuente = prop.get_name()
+                from ezdxf import fonts
+                fonts.font_manager.add_font(ruta_fuente)
+            except Exception: pass
                 
         for style in doc.styles:
             style.dxf.font = nombre_fuentedirectorio_actual = os.path.dirname(os.path.abspath(__file__))
