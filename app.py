@@ -1654,12 +1654,17 @@ with st.container():
         
         conteo_equipos = {}
         elementos_unicos_tabla = []
+        
         for tipo, modelo, datos_eq in lista_para_tabla:
+            # Multiplicamos la cantidad si NO es un Gabinete de Paralelismo o Conexión
+            es_comun = "GABINETE" in tipo and ("CONEXIÓN" in tipo or "PARALELO" in tipo)
+            incremento = 1 if es_comun else cant_sistemas
+            
             if tipo not in conteo_equipos:
-                conteo_equipos[tipo] = 1
+                conteo_equipos[tipo] = incremento
                 elementos_unicos_tabla.append((tipo, datos_eq))
             else:
-                conteo_equipos[tipo] += 1
+                conteo_equipos[tipo] += incremento
                 
         OFFSET_X_MARCO_C = 343.77
         OFFSET_Y_MARCO_C = 46.0
